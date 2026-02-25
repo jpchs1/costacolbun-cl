@@ -1,0 +1,287 @@
+.cq-foldingcard {
+  align-items: center;
+  display: flex;
+  display: -ms-flexbox;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  -ms-flex-pack: center;
+}
+
+.cq-foldingcard.cq-foldingcard-shape-square{
+  border-radius: 0;
+}
+.cq-foldingcard-shape-rounded .cq-foldingcard-cardfront, .cq-foldingcard-shape-rounded .cq-foldingcard-cardback, .cq-foldingcard-shape-rounded .cq-foldingcard-caption  {
+  border-radius: 8px;
+}
+.cq-foldingcard-shape-round .cq-foldingcard-cardfront, .cq-foldingcard-shape-round .cq-foldingcard-cardback, .cq-foldingcard-shape-round .cq-foldingcard-caption  {
+  border-radius: 16px;
+}
+
+.cq-foldingcard-link, .cq-foldingcard-link:hover{
+  border: none;
+  outline: none;
+  text-decoration: none;
+}
+
+.cq-foldingcard-section {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.cq-foldingcard-card {
+  height: auto;
+  min-height: 5rem;
+  width: 15rem;
+  position: relative;
+  transition: all 1s ease;
+}
+
+.cq-foldingcard-size-small .cq-foldingcard-card {
+  width: 10rem;
+}
+.cq-foldingcard-size-medium .cq-foldingcard-card {
+  width: 15rem;
+}
+.cq-foldingcard-size-large .cq-foldingcard-card {
+  width: 20rem;
+}
+
+
+.cq-foldingcard-flipcard {
+  height: auto;
+  perspective: 100rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  visibility: hidden;
+  width: 15rem;
+  z-index: 100;
+}
+
+.cq-foldingcard-size-small .cq-foldingcard-flipcard {
+  width: 10rem;
+}
+.cq-foldingcard-size-medium .cq-foldingcard-flipcard {
+  width: 15rem;
+}
+.cq-foldingcard-size-large .cq-foldingcard-flipcard {
+  width: 20rem;
+}
+
+
+.cq-foldingcard-flipcard > * {
+  visibility: visible;
+}
+
+.cq-foldingcard-cardcontainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transition: all 1s ease;
+  width: 100%;
+}
+
+.cq-foldingcard-cardfront,
+.cq-foldingcard-cardback {
+  position: relative;
+  backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  height: auto;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: auto;
+}
+
+.cq-foldingcard-cardback {
+  background-color: #222F46;
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center center;
+  z-index: 101;
+}
+
+
+.cq-foldingcard-cardfront {
+  position: relative;
+  color: #FFF;
+  background-color: #222F46;
+  width: 15rem;
+  z-index: 100;
+  background-size: cover;
+  background-position: center center;
+}
+.cq-foldingcard-size-small .cq-foldingcard-cardfront {
+  width: 10rem;
+}
+.cq-foldingcard-size-medium .cq-foldingcard-cardfront {
+  width: 15rem;
+}
+.cq-foldingcard-size-large .cq-foldingcard-cardfront {
+  width: 20rem;
+}
+
+.cq-foldingcard-cardfront .cq-foldingcard-heading{
+  color: #FFF;
+  margin: .4rem 0 0 0;
+}
+
+.cq-foldingcard-icon{
+  font-size: 2em;
+}
+
+.cq-foldingcard-cardfront-top {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 54px);
+  justify-content: center;
+  padding: .75rem;
+  background-size: cover;
+  background-position: center center;
+}
+
+.cq-foldingcard-cardfront-bottom {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.cq-foldingcard-avatar{
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  border-radius: 100%;
+  color: #FFF;
+  background-color: #7FD8A0;
+  background-size: cover;
+  background-position: center center;
+}
+.cq-foldingcard-avatar-small .cq-foldingcard-avatar{
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.cq-foldingcard-avatar-medium .cq-foldingcard-avatar{
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.cq-foldingcard-avatar-large .cq-foldingcard-avatar{
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+}
+.cq-foldingcard-cardfront .cq-foldingcard-name {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: .8rem;
+}
+.cq-foldingcard-cardfront .cq-foldingcard-title{
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 12px 0 4px 0;
+  color: #FFF;
+}
+.cq-foldingcard-caption .cq-foldingcard-captiontitle{
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 12px 0 4px 0;
+  color: #FFF;
+}
+
+.cq-foldingcard-cardfront .cq-foldingcard-label{
+  display: inline-block;
+  font-size: 1rem;
+  padding-top: 4px;
+  padding-bottom: 12px;
+  margin: 0 0 12px 0;
+  line-height: 120%;
+}
+.cq-foldingcard-content{
+  color: #FFF;
+  max-width: 100%;
+  position: relative;
+  margin: 10px 0;
+}
+
+
+.cq-foldingcard-caption {
+  background-color: #656D78;
+  height: auto;
+  padding: 1rem;
+  position: absolute;
+  right: 0;
+  transition: all 1s ease;
+  width: 15rem;
+  z-index: 1;
+}
+
+.cq-foldingcard-size-small .cq-foldingcard-caption {
+  width: 10rem;
+}
+.cq-foldingcard-size-medium .cq-foldingcard-caption {
+  width: 15rem;
+}
+.cq-foldingcard-size-large .cq-foldingcard-caption {
+  width: 20rem;
+}
+
+
+.cq-foldingcard-caption-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+
+.cq-foldingcard-section:hover .cq-foldingcard-card {
+  width: 30rem;
+  max-width: 100%;
+}
+.cq-foldingcard-size-small .cq-foldingcard-card:hover {
+  width: 20rem;
+}
+.cq-foldingcard-size-medium .cq-foldingcard-card:hover {
+  width: 30rem;
+}
+.cq-foldingcard-size-large .cq-foldingcard-card:hover {
+  width: 40rem;
+}
+
+
+.cq-foldingcard-section:hover .cq-foldingcard-cardcontainer {
+  transform: rotateY(-180deg);
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 600px) {
+  .cq-foldingcard-size-large .cq-foldingcard-card {
+    width: 15rem;
+  }
+
+  .cq-foldingcard-size-large .cq-foldingcard-flipcard {
+    width: 15rem;
+  }
+  .cq-foldingcard-size-large .cq-foldingcard-cardfront {
+    width: 15rem;
+  }
+  .cq-foldingcard-size-large .cq-foldingcard-caption {
+    width: 15rem;
+  }
+    .cq-foldingcard-size-large .cq-foldingcard-card:hover {
+    width: 30rem;
+  }
+
+
+}

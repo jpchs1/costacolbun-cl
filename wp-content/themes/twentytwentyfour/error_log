@@ -1,0 +1,4 @@
+[24-Feb-2026 00:51:34 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/wwimpo/costacolbun.cl/wp-content/themes/twentytwentyfour/functions.php:147
+Stack trace:
+#0 {main}
+  thrown in /home/wwimpo/costacolbun.cl/wp-content/themes/twentytwentyfour/functions.php on line 147

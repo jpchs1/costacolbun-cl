@@ -1,0 +1,4 @@
+[24-Feb-2026 00:54:12 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function get_locale() in /home/wwimpo/costacolbun.cl/wp-admin/includes/admin.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/wwimpo/costacolbun.cl/wp-admin/includes/admin.php on line 16

@@ -1,0 +1,4 @@
+[09-Oct-2024 10:03:20 America/New_York] PHP Fatal error:  Uncaught Error: Undefined constant "ABSPATH" in /home/wwimpo/costacolbun.cl/wp-includes/blocks/index.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/wwimpo/costacolbun.cl/wp-includes/blocks/index.php on line 8

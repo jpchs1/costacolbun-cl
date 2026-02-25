@@ -1,0 +1,19 @@
+.frm_multiselect.frm_invisible + .btn-group.frm-btn-group.dropdown {
+	visibility: hidden;
+}
+
+.frm_postmeta_row .frm_add_tag:before,
+.frm_postmeta_row .frm_remove_tag:before,
+.frm_posttax_row .frm_add_tag:before,
+.frm_posttax_row .frm_remove_tag:before,
+.frm_logic_row .frm_add_tag:before,
+.frm_logic_row .frm_remove_tag:before {
+	content: "";
+}
+
+/** 
+ * Bootstrap multiselect CSS
+ */
+ .frm-dropdown-menu > .frm_disabled_option > span {
+	opacity: 0.5;
+ }

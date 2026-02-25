@@ -1,0 +1,77 @@
+Plugin Name: WP Defender
+Author: WPMU DEV
+Tested up to: 6.6.1
+
+Change Log:
+
+= 4.9.0 ( 2024-09-02 ) =
+
+- New: Smart IP Detection method
+- Enhance: Improved error handling of Malware Scan during checksum
+- Enhance: Improved scan logic to detect plugins from wp.org
+- Enhance: Mention Defender in Cloudflare and X-Forwarded-For IP detection notices
+- Enhance: Usage Tracking improvements
+- Fix: Google reCAPTCHA verification failure on WooCommerce my-account and checkout pages
+- Fix: Google reCAPTCHA V3 error in the console log
+- Fix: 2FA settings issue in WooCommerce
+- Fix: Issues when uploading Config
+- Fix: Getting 'ERROR: Something went wrong' when registering a new authenticator
+- Fix: Copy error in translations
+- Fix: Undefined array key in Audit logs
+- Fix: Foreign key getting duplicated
+- Fix: Broken error notice design in 2FA methods
+
+= 4.8.2 ( 2024-07-31 ) =
+
+- Fix: Incorrect IP header detection on WPMU DEV hosting
+- Fix: Malware Scanning is not working for specific timezones
+- Fix: Can not set notification schedule after changing the site language
+- Fix: Quarantine feature improvements
+
+= 4.8.1 ( 2024-07-23 ) =
+
+- Enhance: Improvements for Known vulnerabilities
+- Fix: Multiple redirects when Mask Login Redirect Traffic is set to custom/external URL
+
+= 4.8.0 ( 2024-07-15 ) =
+
+- Enhance: Compatibility with WordPress 6.6
+- Enhance: WPCS compliance
+- Fix: Editors can't close Cloudflare Usage notification
+
+= 4.7.4 ( 2024-06-27 ) =
+
+- Fix: Hide Expert Services when Whitelabel is enabled
+
+= 4.7.3 ( 2024-06-27 ) =
+
+- Fix: Broken Access Control vulnerability on the Configs page
+
+= 4.7.2 ( 2024-06-18 ) =
+
+- Enhance: Option to reset Locations on the IP Banning page
+- Enhance: Removed unnecessary login filters on Mask Login to enhance security
+- Enhance: Show loading icon with message when clicking pagination buttons on Firewall logs
+- Enhance: Change the final text for the WP CLI command to remove log files older than a week
+- Enhance: Added malware signature to detect fake Core Fork plugin enhancing site security
+- Enhance: Email design improvement for 2FA code
+- Enhance: Show loading icon only for the current button
+- Enhance: Updated malware signatures to detect different infected files improving overall security
+- Enhance: Add WP CLI to clear the MaxMind license key
+- Fix: Custom logo overlaps on Malware Scanning progress bar
+- Fix: Update Calotes\DB\Mapper::save() to handle integers correctly
+- Fix: Google reCAPTCHA bypassed using auto-fill on the Login page
+- Fix: Google reCAPTCHA v2 invisible not working with the Ship to a different address option in the WooCommerce plugin
+- Fix: Suspicious files are not detected in the plugin folder when Scan plugin files are enabled
+- Fix: Notification displayed twice on the Notifications page in the free version
+- Fix: Mask Login URL isn't working when it is a Plain permalink structure
+- Fix: WordPress sends an error email with the Mask_Login::filter_site_url method
+- Fix: Update Support links
+- Fix: UI Improvements
+- Fix: Bulk delete issues fail when files have non-edit permissions
+- Fix: Calendar displayed in blue when High contrast mode is enabled
+- Fix: Ban/unban IP from Firewall Logs not reflected on the IP Banning Tab
+- Fix: Mask URL is not working on the default WP recovery email when a site goes down
+
+
+941105-1725299919-au

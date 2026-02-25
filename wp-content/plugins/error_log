@@ -1,0 +1,4 @@
+[29-Aug-2023 23:30:37 America/New_York] PHP Fatal error:  Uncaught Error: Call to undefined function add_action() in /home/wwimpo/costacolbun.cl/wp-content/plugins/hello.php:69
+Stack trace:
+#0 {main}
+  thrown in /home/wwimpo/costacolbun.cl/wp-content/plugins/hello.php on line 69

@@ -1,0 +1,6 @@
+[2026-02-22T11:22:09-03:00] IP Blocklist API Error: Unauthorized. Invalid key.
+[2026-02-22T11:22:09-03:00] IP Blocklist API: Process for sending logs completed.
+[2026-02-22T11:22:10-03:00] Smart IP DETECTION: IP header detected: REMOTE_ADDR with IP: 50.31.188.34.
+[2026-02-22T11:22:10-03:00] Smart IP DETECTION: Pinged successfully.
+[2026-02-22T23:13:03-03:00] IP Blocklist API Error: Unauthorized. Invalid key.
+[2026-02-22T23:13:03-03:00] IP Blocklist API: Process for sending logs completed.

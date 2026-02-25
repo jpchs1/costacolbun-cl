@@ -1,0 +1,32 @@
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"10","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#227bc3","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#e44993","row_shape_bottom_width":"100","row_shape_bottom_height":"100","pagelayer-id":"1kl4924"} -->
+<!-- sp:pagelayer/pl_col {"overlay_hover_delay":"400","pagelayer-id":"3qr7385"} -->
+<!-- sp:pagelayer/pl_post_title {"title_color":"","typo":",35,,700,,,solid,,,,","align":"center","ele_padding":"40px,0px,0px,0px","pagelayer-id":"vo36254"} /-->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"10","width_content":"fixed","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#227bc3","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#e44993","row_shape_bottom_width":"100","row_shape_bottom_height":"100","row_width":"70%","fixed_width":"70%","fixed_width_tablet":"85%","fixed_width_mobile":"100%","pagelayer-id":"gjg3653"} -->
+<!-- sp:pagelayer/pl_col {"overlay_hover_delay":"400","col_width":"80","col":"12","pagelayer-id":"apo3628"} -->
+<!-- sp:pagelayer/pl_post_info {"layout":"vertical","space_between":"15","align":"center","icon_colors":"normal","text_colors":"normal","text_color_normal":"#000000ff","icon_color_normal":"#000000ff","ele_padding":"0px,0px,10px,0px","pagelayer-id":"t2d8734"} -->
+<!-- sp:pagelayer/pl_post_info_list {"type":"author","info_link":"true","info_icon_on":"true","info_icon":"fas fa-user-circle","pagelayer-id":"o7i9147"} /-->
+<!-- sp:pagelayer/pl_post_info_list {"type":"date","info_link":"true","info_icon_on":"true","info_icon":"fas fa-calendar-alt","date_format":"default","pagelayer-id":"61g5614"} /-->
+<!-- sp:pagelayer/pl_post_info_list {"type":"time","info_link":"true","info_icon_on":"true","info_icon":"fas fa-clock","time_format":"default","pagelayer-id":"3455413"} /-->
+<!-- sp:pagelayer/pl_post_info_list {"type":"comments","info_link":"true","info_icon_on":"true","info_icon":"fas fa-comment","pagelayer-id":"xpj9810"} /-->
+<!-- /sp:pagelayer/pl_post_info -->
+<!-- sp:pagelayer/pl_post_excerpt {"pe_margin":"0px,0px,10px,0px","align":"left","color":"","pagelayer-id":"zkk6779"} /-->
+<!-- sp:pagelayer/pl_featured_img {"size":"full","img_filter":"0,100,100,0,0,100,100","caption_color":"#0986c0","img_hover_delay":"400","custom_size":"70%,0%","align":"center","pagelayer-id":"kii9294"} /-->
+<!-- sp:pagelayer/pl_post_content {"ele_margin":"10px,0px,20px,0px","font_size":"NaN","color":"#000000ff","pagelayer-id":"dq26758"} /-->
+<!-- sp:pagelayer/pl_post_info {"layout":"horizontal","space_between":"5","align":"left","icon_colors":"normal","text_colors":"normal","input_typo":",,,,,,Solid,,,,","icon_color_normal":"#000000ff","text_color_normal":"#000000ff","pagelayer-id":"njg3399"} -->
+<!-- sp:pagelayer/pl_post_info_list {"type":"terms","info_link":"true","info_icon_on":"","info_icon":"fas fa-user-circle","taxonomy":"category","info_before":"Category :","pagelayer-id":"uts5759"} /-->
+<!-- sp:pagelayer/pl_post_info_list {"type":"terms","info_link":"true","info_icon_on":"","info_icon":"fas fa-user-circle","taxonomy":"post_tag","info_before":"Tags :","pagelayer-id":"ojr6592"} /-->
+<!-- /sp:pagelayer/pl_post_info -->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"10","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#227bc3","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#e44993","row_shape_bottom_width":"100","row_shape_bottom_height":"100","pagelayer-id":"pnm8468"} -->
+<!-- sp:pagelayer/pl_col {"overlay_hover_delay":"400","pagelayer-id":"2516510"} -->
+<!-- sp:pagelayer/pl_post_nav {"lables":"true","post_title":"true","arrows":"true","sep_color":"#bdbdbd","sep_rotate":"20","sep_width":"5","prev_label":"Previous","next_label":"Next","label_colors":"normal","title_colors":"normal","arrows_list":"angle-double","icon_colors":"normal","label_color":"#000000ff","icon_color":"#000000ff","disable_sep":"true","title_color":"#000000ff","pagelayer-id":"9fh7017"} /-->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->
+<!-- sp:pagelayer/pl_row {"stretch":"auto","col_gap":"10","width_content":"auto","row_height":"default","overlay_hover_delay":"400","row_shape_top_color":"#227bc3","row_shape_top_width":"100","row_shape_top_height":"100","row_shape_bottom_color":"#e44993","row_shape_bottom_width":"100","row_shape_bottom_height":"100","pagelayer-id":"p0c9368"} -->
+<!-- sp:pagelayer/pl_col {"overlay_hover_delay":"400","pagelayer-id":"cxd6298"} -->
+<!-- sp:pagelayer/pl_post_comment {"comment_skin":"theme_comment","post_type":"current","pagelayer-id":"td88453"} /-->
+<!-- /sp:pagelayer/pl_col -->
+<!-- /sp:pagelayer/pl_row -->

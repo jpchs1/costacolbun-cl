@@ -1,0 +1,1123 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Salient\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-13 13:31+0000\n"
+"PO-Revision-Date: 2022-10-13 13:32+0000\n"
+"Last-Translator: \n"
+"Language-Team: Español\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0.2\n"
+"X-Domain: salient"
+
+#: nectar/options/fields/color_gradient/field_color_gradient.php:35
+msgid " To:"
+msgstr ""
+
+#: comments.php:20 nectar/helpers/page-header.php:520
+#: nectar/helpers/page-header.php:535
+#: includes/partials/single-post/post-header-no-img-regular.php:96
+#: includes/partials/single-post/post-header-no-img-regular.php:110
+#: includes/partials/single-post/post-meta-bar-ascend-skin.php:41
+#: includes/partials/blog/styles/masonry-classic/post-meta-header.php:23
+#: includes/partials/blog/styles/standard-classic/entry.php:49
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:49
+#: includes/partials/blog/styles/standard-classic/entry-video.php:49
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:49
+msgid "% Comments"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:66 nectar/helpers/wpbakery-init.php:295
+msgid "1 column - 1/12"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:75 nectar/helpers/wpbakery-init.php:304
+msgid "10 columns - 5/6"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:76 nectar/helpers/wpbakery-init.php:305
+msgid "11 columns - 11/12"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:77 nectar/helpers/wpbakery-init.php:306
+msgid "12 columns - 1/1"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:67 nectar/helpers/wpbakery-init.php:296
+msgid "2 columns - 1/6"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:78 nectar/helpers/wpbakery-init.php:307
+msgid "20% - 1/5"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:68 nectar/helpers/wpbakery-init.php:297
+msgid "3 columns - 1/4"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:69 nectar/helpers/wpbakery-init.php:298
+msgid "4 columns - 1/3"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:79 nectar/helpers/wpbakery-init.php:308
+msgid "40% - 2/5"
+msgstr ""
+
+#: 404.php:47
+msgid "404"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:70 nectar/helpers/wpbakery-init.php:299
+msgid "5 columns - 5/12"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:71 nectar/helpers/wpbakery-init.php:300
+msgid "6 columns - 1/2"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:80 nectar/helpers/wpbakery-init.php:309
+msgid "60% - 3/5"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:72 nectar/helpers/wpbakery-init.php:301
+msgid "7 columns - 7/12"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:73 nectar/helpers/wpbakery-init.php:302
+msgid "8 columns - 2/3"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:81 nectar/helpers/wpbakery-init.php:310
+msgid "80% - 4/5"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:74 nectar/helpers/wpbakery-init.php:303
+msgid "9 columns - 3/4"
+msgstr ""
+
+#: includes/partials/single-post/author-bio-ascend-skin.php:35
+#: includes/partials/single-post/author-bio.php:40
+msgid "About"
+msgstr ""
+
+#: nectar/helpers/header.php:1354 includes/partials/header/header-menu.php:134
+msgid "account"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:232 nectar/helpers/wpbakery-init.php:455
+msgid ""
+"Add parallax type background for row (Note: If no image is specified, "
+"parallax will use background image from Design Options)."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:217 nectar/helpers/wpbakery-init.php:440
+msgid "Add parallax type background for row."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:202 nectar/helpers/wpbakery-init.php:425
+msgid "Add YouTube link."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:92 nectar/helpers/wpbakery-init.php:321
+msgid ""
+"Adjust column for different screen sizes. Control width, offset and "
+"visibility settings."
+msgstr ""
+
+#: template-portfolio.php:96 template-portfolio.php:99
+#: nectar/helpers/page-header.php:597 nectar/helpers/page-header.php:800
+msgid "All"
+msgstr ""
+
+#: template-portfolio.php:1500 template-portfolio.php:1522
+#: nectar/helpers/pagination.php:180
+msgid "All items loaded"
+msgstr ""
+
+#: nectar/helpers/page-header.php:824
+msgid "All Posts By"
+msgstr ""
+
+#. Description of the theme
+msgid "An Ultra Responsive Multi-Purpose Theme."
+msgstr ""
+
+#: nectar/helpers/page-header.php:852
+msgid "Archives"
+msgstr ""
+
+#: includes/partials/single-post/author-bio-ascend-skin.php:35
+#: includes/partials/single-post/author-bio.php:40
+msgid "Author"
+msgstr ""
+
+#: includes/partials/footer/off-canvas-navigation.php:74
+msgid "Back"
+msgstr ""
+
+#: 404.php:51
+msgid "Back Home"
+msgstr ""
+
+#: template-home-3.php:82 template-home-2.php:84 template-home-1.php:78
+#: template-home-4.php:78
+msgid "Back to Video"
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:1227
+#, php-format
+msgid "Based on %1$s review"
+msgid_plural "Based on %1$s reviews"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nectar/welcome/welcome-page.php:160
+msgid "Begin Installing Plugins"
+msgstr ""
+
+#: nectar/plugin-notices/salient-plugin-notices.php:78
+msgid "Begin Installing/Activating Plugins"
+msgstr ""
+
+#: search.php:82 nectar/assets/functions/ajax-search/wp-search-suggest.php:91
+msgid "Blog Post"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:131 nectar/helpers/wpbakery-init.php:384
+#: nectar/helpers/wpbakery-init.php:408
+msgid "Bottom"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:871
+msgid "Button Accent Color"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:873
+msgid "Button Bordered Accent Color"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:874
+msgid "Button Bordered Extra Color #1"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:872
+msgid "Button Extra Color #1"
+msgstr ""
+
+#: nectar/helpers/page-header.php:501
+#: includes/partials/single-post/post-header-no-img-regular.php:76
+#: includes/partials/blog/styles/masonry-classic/post-meta-header.php:20
+#: includes/partials/blog/styles/masonry-meta-overlaid/entry.php:130
+#: includes/partials/blog/styles/standard-classic/entry.php:44
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:44
+#: includes/partials/blog/styles/standard-classic/entry-video.php:44
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:44
+msgid "By"
+msgstr ""
+
+#: comments.php:61
+msgid "Cancel Reply"
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:762
+#: includes/partials/header/woo-slide-in-cart.php:48
+msgid "Cart"
+msgstr ""
+
+#: nectar/helpers/page-header.php:829
+msgid "Category"
+msgstr ""
+
+#: nectar/meta/category-meta.php:41
+msgid "Category Color"
+msgstr ""
+
+#: nectar/meta/category-meta.php:133
+msgid "Category Header Content Align"
+msgstr ""
+
+#: nectar/meta/category-meta.php:30 nectar/meta/category-meta.php:173
+msgid "Category Header Image"
+msgstr ""
+
+#: nectar/meta/category-meta.php:153
+msgid "Category Header Text Align"
+msgstr ""
+
+#: nectar/meta/category-meta.php:19
+msgid "Category Thumbnail Image"
+msgstr ""
+
+#: nectar/meta/category-meta.php:142 nectar/meta/category-meta.php:162
+msgid "Center"
+msgstr ""
+
+#: nectar/redux-framework/ReduxCore/templates/panel/footer.tpl.php:35
+msgid "Changelog"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:111
+msgid "changelog"
+msgstr ""
+
+#: includes/partials/header/woo-slide-in-cart.php:48
+msgid "Close Cart"
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:563 nectar/helpers/woocommerce.php:571
+msgid "Close Filters"
+msgstr ""
+
+#: includes/partials/footer/off-canvas-navigation.php:92
+msgid "Close Menu"
+msgstr ""
+
+#: includes/header-search.php:74
+msgid "Close Search"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:182
+msgid "Column"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:137 nectar/helpers/wpbakery-init.php:351
+msgid "Columns gap"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:379
+msgid "Columns position"
+msgstr ""
+
+#: template-home-3.php:424 template-home-2.php:281
+msgid "Comments"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:333
+msgid "Content"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:125 nectar/helpers/wpbakery-init.php:402
+msgid "Content position"
+msgstr ""
+
+#: includes/partials/blog/styles/standard-minimal/entry.php:39
+#: includes/partials/blog/styles/standard-minimal/entry-audio.php:38
+#: includes/partials/blog/styles/standard-minimal/entry-video.php:38
+#: includes/partials/blog/styles/standard-minimal/entry-quote.php:38
+msgid "Continue Reading"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:57 nectar/helpers/wpbakery-init.php:172
+#: nectar/helpers/wpbakery-init.php:286 nectar/helpers/wpbakery-init.php:517
+msgid "CSS box"
+msgstr ""
+
+#: nectar/helpers/page-header.php:841
+msgid "Daily Archives"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:128 nectar/helpers/wpbakery-init.php:342
+#: nectar/helpers/wpbakery-init.php:405 nectar/meta/category-meta.php:140
+#: nectar/meta/category-meta.php:160
+msgid "Default"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:59 nectar/helpers/wpbakery-init.php:174
+#: nectar/helpers/wpbakery-init.php:288 nectar/helpers/wpbakery-init.php:519
+msgid "Design Options"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:158 nectar/helpers/wpbakery-init.php:503
+msgid "Disable row"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:168
+#: nectar/redux-framework/ReduxCore/templates/panel/footer.tpl.php:39
+msgid "Documentation"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:44 nectar/helpers/wpbakery-init.php:274
+msgid "Element ID"
+msgstr ""
+
+#: comments.php:94
+msgid "Email"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:46 nectar/helpers/wpbakery-init.php:276
+#, php-format
+msgid ""
+"Enter element ID (Note: make sure it is unique and valid according to <a "
+"href=\"%s\" target=\"_blank\">w3c specification</a>)."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:114
+#, php-format
+msgid ""
+"Enter optional row ID. Make sure it is unique, and it is valid as w3c "
+"specification: %s (Must not have spaces)"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:254 nectar/helpers/wpbakery-init.php:265
+#: nectar/helpers/wpbakery-init.php:477 nectar/helpers/wpbakery-init.php:488
+msgid "Enter parallax speed ratio (Note: Default value is 1.5, min value is 1)"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:499
+#, php-format
+msgid ""
+"Enter row ID (Note: make sure it is unique and valid according to <a "
+"href=\"%s\" target=\"_blank\">w3c specification</a>)."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:118 nectar/helpers/wpbakery-init.php:395
+msgid "Equal height"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:50 nectar/helpers/wpbakery-init.php:166
+#: nectar/helpers/wpbakery-init.php:280 nectar/helpers/wpbakery-init.php:511
+msgid "Extra class name"
+msgstr ""
+
+#: nectar/helpers/page-header.php:481 nectar/helpers/page-header.php:511
+#: includes/partials/single-post/post-header-no-img-fullscreen.php:70
+#: includes/partials/single-post/post-header-no-img-fullscreen.php:77
+#: includes/partials/single-post/post-header-no-img-regular.php:81
+#: includes/partials/single-post/post-header-no-img-regular.php:87
+#: includes/partials/single-post/post-meta-fields.php:45
+msgid "F jS, Y"
+msgstr ""
+
+#: nectar/redux-framework/ReduxCore/templates/panel/footer.tpl.php:27
+msgid "Facebook"
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:549 nectar/helpers/woocommerce.php:559
+msgid "Filters"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:127
+msgid "For Upgrading Users Coming From Version 10.5 Or Below"
+msgstr ""
+
+#: nectar/options/fields/color_gradient/field_color_gradient.php:28
+#: nectar/options/fields/color_gradient/field_color_gradient.php:33
+msgid "From:"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:372
+msgid "Full height row?"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:178
+msgid "Get Support"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php:145
+msgid "Go to shop"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:179
+msgid ""
+"Have a Question? Head over to the forum and open a ticket so that we may "
+"assist you."
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:548
+msgid "Hide"
+msgstr ""
+
+#: includes/header-search.php:59
+msgid "Hit enter to search or ESC to close"
+msgstr ""
+
+#. URI of the theme
+msgid ""
+"https://themeforest.net/item/salient-responsive-multipurpose-theme/4363266"
+msgstr ""
+
+#. Author URI of the theme
+msgid "https://themeforest.net/user/themenectar"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:120 nectar/helpers/wpbakery-init.php:397
+msgid "If checked columns will be set to equal height."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:374
+msgid "If checked row will be set to full height."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:161 nectar/helpers/wpbakery-init.php:506
+msgid ""
+"If checked the row won't be visible on the public side of your website. You "
+"can switch it back any time."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:193 nectar/helpers/wpbakery-init.php:416
+msgid "If checked, video will be used as row background."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:240 nectar/helpers/wpbakery-init.php:463
+msgid "Image"
+msgstr ""
+
+#: includes/partials/blog/styles/standard-minimal/post-author.php:34
+msgid "In"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:31
+msgid "Inner Column"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:100
+msgid "Inner Row"
+msgstr ""
+
+#: comments.php:20
+msgid "Join the discussion"
+msgstr ""
+
+#: comments.php:59
+msgid "Leave a Reply"
+msgstr ""
+
+#: comments.php:60
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: nectar/meta/category-meta.php:141 nectar/meta/category-meta.php:161
+msgid "Left"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:114
+msgid "link"
+msgstr ""
+
+#: comments.php:74
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+
+#: nectar/helpers/header.php:1282 nectar/helpers/header.php:1286
+#: nectar/helpers/header.php:1335 nectar/helpers/header.php:1339
+#: includes/partials/header/header-menu.php:108
+#: includes/partials/header/header-menu.php:110
+#: includes/partials/header/header-menu.php:155
+#: includes/partials/header/header-menu.php:158
+msgid "Menu"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:868
+msgid "Menu Item Style"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:130 nectar/helpers/wpbakery-init.php:382
+#: nectar/helpers/wpbakery-init.php:407
+msgid "Middle"
+msgstr ""
+
+#: nectar/helpers/page-header.php:524
+#: includes/partials/single-post/post-header-no-img-regular.php:100
+#: includes/partials/single-post/post-meta-fields.php:54
+msgid "min read"
+msgstr ""
+
+#: nectar/helpers/page-header.php:845
+msgid "Monthly Archives"
+msgstr ""
+
+#: nectar/helpers/page-header.php:844
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr ""
+
+#: template-home-3.php:226 template-home-1.php:218 template-portfolio.php:321
+msgid "More Details"
+msgstr ""
+
+#: template-home-3.php:82 template-home-2.php:84 template-home-1.php:78
+#: template-home-4.php:78
+msgid "More Info"
+msgstr ""
+
+#: nectar/woo/quick-view.php:202
+msgid "More Information"
+msgstr ""
+
+#: includes/partials/single-post/author-bio-ascend-skin.php:40
+#: includes/partials/single-post/author-bio.php:58
+msgid "More posts by"
+msgstr ""
+
+#: comments.php:53
+msgid "My comment is.."
+msgstr ""
+
+#: comments.php:88
+msgid "Name"
+msgstr ""
+
+#: nectar/helpers/header.php:1291 includes/partials/header/header-menu.php:106
+#: includes/partials/header/header-menu.php:153
+msgid "Navigation Menu"
+msgstr ""
+
+#: nectar/helpers/pagination.php:190 nectar/helpers/enqueue-scripts.php:331
+#: nectar/helpers/woocommerce.php:617
+msgid "Next"
+msgstr ""
+
+#: nectar/helpers/pagination.php:138 nectar/helpers/blog.php:282
+#: nectar/helpers/blog.php:317
+msgid "Next Post"
+msgstr ""
+
+#: template-home-3.php:424 template-home-2.php:281 comments.php:20
+#: nectar/helpers/page-header.php:520 nectar/helpers/page-header.php:535
+#: includes/partials/single-post/post-header-no-img-regular.php:96
+#: includes/partials/single-post/post-header-no-img-regular.php:110
+#: includes/partials/single-post/post-meta-bar-ascend-skin.php:41
+#: includes/partials/blog/styles/masonry-classic/post-meta-header.php:23
+#: includes/partials/blog/styles/standard-classic/entry.php:49
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:49
+#: includes/partials/blog/styles/standard-classic/entry-video.php:49
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:49
+msgid "No Comments"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:213 nectar/helpers/wpbakery-init.php:228
+#: nectar/helpers/wpbakery-init.php:436 nectar/helpers/wpbakery-init.php:451
+msgid "None"
+msgstr ""
+
+#: template-home-3.php:424 template-home-2.php:281 comments.php:20
+#: nectar/helpers/page-header.php:520 nectar/helpers/page-header.php:535
+#: includes/partials/single-post/post-header-no-img-regular.php:96
+#: includes/partials/blog/styles/standard-classic/entry.php:49
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:49
+#: includes/partials/blog/styles/standard-classic/entry-video.php:49
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:49
+msgid "One Comment"
+msgstr ""
+
+#: includes/partials/single-post/post-header-no-img-regular.php:110
+#: includes/partials/single-post/post-meta-bar-ascend-skin.php:41
+#: includes/partials/blog/styles/masonry-classic/post-meta-header.php:23
+msgid "One Comment "
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:180
+msgid "Open Support Forum"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:138 nectar/welcome/welcome-page.php:141
+#: nectar/welcome/welcome-page.php:144 nectar/welcome/welcome-page.php:147
+#: nectar/welcome/welcome-page.php:150 nectar/welcome/welcome-page.php:153
+#: nectar/welcome/welcome-page.php:156
+#: nectar/plugin-notices/salient-plugin-notices.php:56
+#: nectar/plugin-notices/salient-plugin-notices.php:59
+#: nectar/plugin-notices/salient-plugin-notices.php:62
+#: nectar/plugin-notices/salient-plugin-notices.php:65
+#: nectar/plugin-notices/salient-plugin-notices.php:68
+#: nectar/plugin-notices/salient-plugin-notices.php:71
+#: nectar/plugin-notices/salient-plugin-notices.php:74
+msgid "Optional"
+msgstr ""
+
+#: nectar/redux-framework/ReduxCore/templates/panel/header.tpl.php:73
+msgid "Options Panel"
+msgstr ""
+
+#: search.php:120 nectar/assets/functions/ajax-search/wp-search-suggest.php:95
+msgid "Page"
+msgstr ""
+
+#: 404.php:48
+msgid "Page Not Found"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:210 nectar/helpers/wpbakery-init.php:225
+#: nectar/helpers/wpbakery-init.php:433 nectar/helpers/wpbakery-init.php:448
+msgid "Parallax"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:251 nectar/helpers/wpbakery-init.php:262
+#: nectar/helpers/wpbakery-init.php:474 nectar/helpers/wpbakery-init.php:485
+msgid "Parallax speed"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:187
+msgid "Place content elements inside the column"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:40
+msgid "Place content elements inside the inner column"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:108
+msgid "Place content elements inside the inner row"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:335
+msgid "Place content elements inside the row"
+msgstr ""
+
+#: search.php:187
+msgid "Please try again with different keywords."
+msgstr ""
+
+#: search.php:142 nectar/assets/functions/ajax-search/wp-search-suggest.php:99
+msgid "Portfolio Item"
+msgstr ""
+
+#: includes/header-search.php:57
+msgid "Press enter to begin your search"
+msgstr ""
+
+#: nectar/helpers/pagination.php:189 nectar/helpers/enqueue-scripts.php:332
+#: nectar/helpers/woocommerce.php:616
+msgid "Previous"
+msgstr ""
+
+#: nectar/helpers/pagination.php:138 nectar/helpers/blog.php:244
+#: nectar/helpers/blog.php:315
+msgid "Previous Post"
+msgstr ""
+
+#: search.php:156 nectar/assets/functions/ajax-search/wp-search-suggest.php:116
+msgid "Product"
+msgstr ""
+
+#: nectar/woo/quick-view.php:64
+msgid "Quick View"
+msgstr ""
+
+#: includes/partials/single-post/post-content.php:112
+#: includes/partials/blog/styles/masonry-classic/entry.php:53
+#: includes/partials/blog/styles/masonry-classic/entry.php:65
+#: includes/partials/blog/styles/masonry-classic/entry-audio.php:55
+#: includes/partials/blog/styles/masonry-classic/entry-audio.php:67
+#: includes/partials/blog/styles/masonry-classic/entry-video.php:55
+#: includes/partials/blog/styles/masonry-classic/entry-video.php:67
+#: includes/partials/blog/styles/masonry-classic/entry-gallery.php:55
+#: includes/partials/blog/styles/masonry-classic/entry-gallery.php:65
+#: includes/partials/blog/styles/standard-minimal/entry.php:51
+#: includes/partials/blog/styles/standard-minimal/entry-audio.php:50
+#: includes/partials/blog/styles/standard-minimal/entry-video.php:50
+#: includes/partials/blog/styles/standard-minimal/entry-quote.php:48
+#: includes/partials/blog/styles/standard-classic/entry.php:59
+#: includes/partials/blog/styles/standard-classic/entry.php:71
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:59
+#: includes/partials/blog/styles/standard-classic/entry-audio.php:71
+#: includes/partials/blog/styles/standard-classic/entry-video.php:59
+#: includes/partials/blog/styles/standard-classic/entry-video.php:71
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:59
+#: includes/partials/blog/styles/standard-classic/entry-gallery.php:69
+msgid "Read More"
+msgstr ""
+
+#: nectar/helpers/blog.php:400
+msgid "Recommended For You"
+msgstr ""
+
+#: nectar/helpers/blog.php:384 nectar/helpers/blog.php:389
+msgid "Related Posts"
+msgstr ""
+
+#: nectar/meta/category-meta.php:25 nectar/meta/category-meta.php:36
+#: nectar/meta/category-meta.php:184
+#: nectar/options/fields/upload/field_upload.php:31
+#: nectar/redux-framework/ReduxCore/inc/fields/upload/field_upload.php:31
+msgid "Remove Upload"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:132 nectar/welcome/welcome-page.php:135
+#: nectar/plugin-notices/salient-plugin-notices.php:50
+#: nectar/plugin-notices/salient-plugin-notices.php:53
+msgid "Required"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:83 nectar/helpers/wpbakery-init.php:91
+#: nectar/helpers/wpbakery-init.php:312 nectar/helpers/wpbakery-init.php:320
+msgid "Responsive Options"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:89 nectar/helpers/wpbakery-init.php:318
+msgid "Responsiveness"
+msgstr ""
+
+#: search.php:42
+msgid "Results For"
+msgstr ""
+
+#: search.php:45
+msgid "results found"
+msgstr ""
+
+#: nectar/meta/category-meta.php:143 nectar/meta/category-meta.php:163
+msgid "Right"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:328
+msgid "Row"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:112 nectar/helpers/wpbakery-init.php:497
+msgid "Row ID"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:339
+msgid "Row stretch"
+msgstr ""
+
+#. Name of the theme
+msgid "Salient"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:135
+#: nectar/plugin-notices/salient-plugin-notices.php:53
+msgid "Salient Core"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:138
+#: nectar/plugin-notices/salient-plugin-notices.php:56
+msgid "Salient Demo Importer"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:174
+msgid ""
+"Salient has been going strong for over 9 years and is constantly evolving. "
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:128
+msgid ""
+"Salient has separated all of the custom post types and plugin territory "
+"functionality into individual plugins. Please install and activate the "
+"required plugins and any of the desired optional plugins which you wish to "
+"use on your site:"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:153
+#: nectar/plugin-notices/salient-plugin-notices.php:71
+msgid "Salient Home Slider"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:150
+#: nectar/plugin-notices/salient-plugin-notices.php:68
+msgid "Salient Nectar Slider"
+msgstr ""
+
+#: nectar/plugin-notices/salient-plugin-notices.php:44
+msgid "Salient Plugin Notice"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:147
+#: nectar/plugin-notices/salient-plugin-notices.php:65
+msgid "Salient Portfolio"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:156
+#: nectar/plugin-notices/salient-plugin-notices.php:74
+msgid "Salient Shortcodes"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:141
+#: nectar/plugin-notices/salient-plugin-notices.php:59
+msgid "Salient Social"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:110
+msgid "Salient Version 15"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:144
+#: nectar/plugin-notices/salient-plugin-notices.php:62
+msgid "Salient Widgets"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:132
+#: nectar/plugin-notices/salient-plugin-notices.php:50
+msgid "Salient WPBakery Page Builder"
+msgstr ""
+
+#: nectar/woo/admin-notices.php:13
+msgid "salient/woocommerce/cart/cart-shipping.php"
+msgstr ""
+
+#: nectar/woo/admin-notices.php:14
+msgid "salient/woocommerce/cart/cart-totals.php"
+msgstr ""
+
+#: nectar/woo/admin-notices.php:12
+msgid "salient/woocommerce/cart/cart.php"
+msgstr ""
+
+#: nectar/woo/admin-notices.php:15
+msgid "salient/woocommerce/cart/shipping-calculator.php"
+msgstr ""
+
+#: comments.php:106
+msgid ""
+"Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#: searchform.php:15 includes/header-search.php:40
+#: includes/header-search.php:48 includes/header-search.php:52
+msgid "Search"
+msgstr ""
+
+#: nectar/helpers/header.php:1350 includes/partials/header/header-menu.php:128
+msgid "search"
+msgstr ""
+
+#: searchform.php:14
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:14
+msgid "Search..."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:84 nectar/helpers/wpbakery-init.php:313
+msgid "Select column width."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:387
+msgid "Select columns position within row."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:133 nectar/helpers/wpbakery-init.php:410
+msgid "Select content position within columns."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:154 nectar/helpers/wpbakery-init.php:368
+msgid "Select gap between columns in row."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:243 nectar/helpers/wpbakery-init.php:466
+msgid "Select image from media library."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:347
+msgid ""
+"Select stretching options for row and content (Note: stretched may not work "
+"properly if parent container has \"overflow: hidden\" CSS property)."
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:547
+msgid "Show"
+msgstr ""
+
+#: nectar/helpers/blog.php:393
+msgid "Similar Posts"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:214 nectar/helpers/wpbakery-init.php:229
+#: nectar/helpers/wpbakery-init.php:437 nectar/helpers/wpbakery-init.php:452
+msgid "Simple"
+msgstr ""
+
+#: nectar/hooks/actions.php:129
+msgid "Skip to main content"
+msgstr ""
+
+#: search.php:186
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: template-portfolio.php:98 nectar/helpers/page-header.php:595
+#: nectar/helpers/page-header.php:797
+msgid "Sort Portfolio"
+msgstr ""
+
+#: nectar/helpers/nav-menus.php:870
+msgid "Standard"
+msgstr ""
+
+#: includes/header-search.php:40
+msgid "Start Typing..."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:385
+msgid "Stretch"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:343
+msgid "Stretch row"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:344
+msgid "Stretch row and content"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:345
+msgid "Stretch row and content (no paddings)"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:53 nectar/helpers/wpbakery-init.php:168
+#: nectar/helpers/wpbakery-init.php:282 nectar/helpers/wpbakery-init.php:513
+msgid ""
+"Style particular content element differently - add a class name and refer to "
+"it in custom CSS."
+msgstr ""
+
+#: comments.php:62
+msgid "Submit Comment"
+msgstr ""
+
+#: nectar/redux-framework/ReduxCore/templates/panel/footer.tpl.php:31
+msgid "Support Forum"
+msgstr ""
+
+#: nectar/helpers/page-header.php:834
+msgid "Tag"
+msgstr ""
+
+#: includes/partials/single-post/post-content.php:117
+msgid "Tags:"
+msgstr ""
+
+#: nectar/plugin-notices/salient-plugin-notices.php:46
+msgid "The following Salient plugins are not installed or activated: "
+msgstr ""
+
+#. Author of the theme
+msgid "ThemeNectar"
+msgstr ""
+
+#: nectar/woo/admin-notices.php:10
+msgid ""
+"There are some outdated WooCommerce template files in your salient theme "
+"directory that are likely lingering around from a previous version of the "
+"theme. Salient no longer includes any of the following files in the "
+"salient/woocommerce/cart directory. Please ensure none of the files listed "
+"below are present in your theme directory (wp-content/themes/salient)."
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:113
+msgid ""
+"This is a major release. If you're using a performance plugin to cache or "
+"minify your assets, you must clear the cache, or else layout issues are "
+"likely to occur."
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:111
+msgid ""
+"To explore what's new in version 15 and view a full list of changes, check "
+"out the"
+msgstr ""
+
+#: nectar/options/fields/color_gradient/field_color_gradient.php:29
+msgid "To:"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:129 nectar/helpers/wpbakery-init.php:383
+#: nectar/helpers/wpbakery-init.php:406
+msgid "Top"
+msgstr ""
+
+#: nectar/meta/category-meta.php:24 nectar/meta/category-meta.php:35
+#: nectar/meta/category-meta.php:183
+#: nectar/options/fields/upload/field_upload.php:30
+#: nectar/redux-framework/ReduxCore/inc/fields/upload/field_upload.php:30
+msgid "Upload"
+msgstr ""
+
+#: nectar/helpers/pagination.php:65
+#, php-format
+msgid "Use commas instead of %s to separate excluded categories."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:191 nectar/helpers/wpbakery-init.php:414
+msgid "Use video background?"
+msgstr ""
+
+#: includes/partials/single-post/post-header-no-img-fullscreen.php:51
+#: includes/partials/single-post/post-header-no-img-regular.php:57
+#: includes/partials/single-post/post-categories.php:24
+#, php-format
+msgid "View all posts in %s"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:175
+msgid "View Changelog"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:170
+msgid "View Documentation"
+msgstr ""
+
+#: template-home-3.php:223 template-home-1.php:215 template-portfolio.php:317
+msgid "View Larger"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:169
+msgid "View our online user guide and documentation to get started."
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:1159
+msgid "was successfully added to your cart."
+msgstr ""
+
+#: comments.php:101
+msgid "Website"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:87 nectar/welcome/welcome-page.php:88
+msgid "Welcome To Salient"
+msgstr ""
+
+#: nectar/welcome/welcome-page.php:173
+msgid "What's New"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:63 nectar/helpers/wpbakery-init.php:292
+msgid "Width"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:215 nectar/helpers/wpbakery-init.php:230
+#: nectar/helpers/wpbakery-init.php:438 nectar/helpers/wpbakery-init.php:453
+msgid "With fade"
+msgstr ""
+
+#: nectar/helpers/woocommerce.php:1236 nectar/helpers/woocommerce.php:1262
+msgid "Write a Review"
+msgstr ""
+
+#: nectar/helpers/page-header.php:849
+msgid "Yearly Archives"
+msgstr ""
+
+#: nectar/helpers/page-header.php:848
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:121 nectar/helpers/wpbakery-init.php:162
+#: nectar/helpers/wpbakery-init.php:194 nectar/helpers/wpbakery-init.php:375
+#: nectar/helpers/wpbakery-init.php:398 nectar/helpers/wpbakery-init.php:417
+#: nectar/helpers/wpbakery-init.php:507
+msgid "Yes"
+msgstr ""
+
+#: nectar/helpers/blog.php:397
+msgid "You May Also Like"
+msgstr ""
+
+#: comments.php:68
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: nectar/helpers/wpbakery-init.php:198 nectar/helpers/wpbakery-init.php:421
+msgid "YouTube link"
+msgstr ""

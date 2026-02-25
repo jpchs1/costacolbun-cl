@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.19">
+
+  
+  <!-- Spot Style - Default Polygon Spot Style -->
+  <style name="PolygonDefaultPolygonSpotStyle"
+           visible="false"
+           bordercolor="0xffffff"
+           fillcolor="0x061800"
+           borderwidth="1"
+           borderalpha="0.59999999999999998"
+           fillalpha="0.21568627450980393"
+           capture="false"
+           onhover="onhoverPolygonDefaultPolygonSpotStyle"
+           onover="onoverPolygonDefaultPolygonSpotStyle"
+           onout="onoutPolygonDefaultPolygonSpotStyle"
+           />
+  <action name="onhoverPolygonDefaultPolygonSpotStyle">
+    showTooltip('hotspot');
+  </action>
+
+  <action name="onoverPolygonDefaultPolygonSpotStyle">
+    set(borderwidth, 1);
+  </action>
+
+  <action name="onoutPolygonDefaultPolygonSpotStyle">
+
+    set(borderwidth, 1);
+    hideTooltip();
+  </action>
+
+
+
+  
+  <!-- Spot Style - Pavimentación -->
+  <style name="PolygonPavimentación"
+           visible="false"
+           bordercolor="0xc7c7c7"
+           fillcolor="0x626262"
+           borderwidth="1"
+           borderalpha="1"
+           fillalpha="0.81176470588235294"
+           capture="false"
+           onhover="onhoverPolygonPavimentación"
+           onover="onoverPolygonPavimentación"
+           onout="onoutPolygonPavimentación"
+           />
+  <action name="onhoverPolygonPavimentación">
+    showTooltip('hotspot');
+  </action>
+
+  <action name="onoverPolygonPavimentación">
+    set(borderwidth, 1);
+  </action>
+
+  <action name="onoutPolygonPavimentación">
+
+    set(borderwidth, 1);
+    hideTooltip();
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 1 -->
+  <style name="IconDefaultPointSpotStyle1"
+         url="%FIRSTXML%/spots/_1_user_defaultpoint1.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle1"
+         onout="onoutIconDefaultPointSpotStyle1"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle1">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle1">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 2 -->
+  <style name="IconDefaultPointSpotStyle2"
+         url="%FIRSTXML%/spots/_2_user_defaultpoint2.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle2"
+         onout="onoutIconDefaultPointSpotStyle2"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle2">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle2">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 3 -->
+  <style name="IconDefaultPointSpotStyle3"
+         url="%FIRSTXML%/spots/_3_user_defaultpoint3.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle3"
+         onout="onoutIconDefaultPointSpotStyle3"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle3">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle3">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 4 -->
+  <style name="IconDefaultPointSpotStyle4"
+         url="%FIRSTXML%/spots/_4_user_defaultpoint4.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle4"
+         onout="onoutIconDefaultPointSpotStyle4"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle4">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle4">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 5 -->
+  <style name="IconDefaultPointSpotStyle5"
+         url="%FIRSTXML%/spots/_5_user_defaultpoint5.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle5"
+         onout="onoutIconDefaultPointSpotStyle5"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle5">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle5">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 6 -->
+  <style name="IconDefaultPointSpotStyle6"
+         url="%FIRSTXML%/spots/_6_user_defaultpoint6.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle6"
+         onout="onoutIconDefaultPointSpotStyle6"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle6">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle6">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 7 -->
+  <style name="IconDefaultPointSpotStyle7"
+         url="%FIRSTXML%/spots/_7_user_defaultpoint7.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle7"
+         onout="onoutIconDefaultPointSpotStyle7"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle7">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle7">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 8 -->
+  <style name="IconDefaultPointSpotStyle8"
+         url="%FIRSTXML%/spots/_8_user_defaultpoint8.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle8"
+         onout="onoutIconDefaultPointSpotStyle8"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle8">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle8">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 9 -->
+  <style name="IconDefaultPointSpotStyle9"
+         url="%FIRSTXML%/spots/_9_user_defaultpoint9.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle9"
+         onout="onoutIconDefaultPointSpotStyle9"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle9">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle9">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 10 -->
+  <style name="IconDefaultPointSpotStyle10"
+         url="%FIRSTXML%/spots/_10_user_defaultpoint10.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle10"
+         onout="onoutIconDefaultPointSpotStyle10"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle10">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle10">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 11 -->
+  <style name="IconDefaultPointSpotStyle11"
+         url="%FIRSTXML%/spots/_11_user_defaultpoint11.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle11"
+         onout="onoutIconDefaultPointSpotStyle11"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle11">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle11">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 12 -->
+  <style name="IconDefaultPointSpotStyle12"
+         url="%FIRSTXML%/spots/_12_user_defaultpoint12.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle12"
+         onout="onoutIconDefaultPointSpotStyle12"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle12">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle12">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 13 -->
+  <style name="IconDefaultPointSpotStyle13"
+         url="%FIRSTXML%/spots/_13_user_defaultpoint13.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle13"
+         onout="onoutIconDefaultPointSpotStyle13"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle13">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle13">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 14 -->
+  <style name="IconDefaultPointSpotStyle14"
+         url="%FIRSTXML%/spots/_14_user_defaultpoint14.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle14"
+         onout="onoutIconDefaultPointSpotStyle14"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle14">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle14">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 15 -->
+  <style name="IconDefaultPointSpotStyle15"
+         url="%FIRSTXML%/spots/_15_user_defaultpoint15.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle15"
+         onout="onoutIconDefaultPointSpotStyle15"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle15">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle15">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 16 -->
+  <style name="IconDefaultPointSpotStyle16"
+         url="%FIRSTXML%/spots/_16_user_defaultpoint16.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle16"
+         onout="onoutIconDefaultPointSpotStyle16"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle16">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle16">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 17 -->
+  <style name="IconDefaultPointSpotStyle17"
+         url="%FIRSTXML%/spots/_17_user_defaultpoint17.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle17"
+         onout="onoutIconDefaultPointSpotStyle17"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle17">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle17">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 18 -->
+  <style name="IconDefaultPointSpotStyle18"
+         url="%FIRSTXML%/spots/_18_user_defaultpoint18.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle18"
+         onout="onoutIconDefaultPointSpotStyle18"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle18">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle18">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 19 -->
+  <style name="IconDefaultPointSpotStyle19"
+         url="%FIRSTXML%/spots/_19_user_defaultpoint19.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle19"
+         onout="onoutIconDefaultPointSpotStyle19"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle19">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle19">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 20 -->
+  <style name="IconDefaultPointSpotStyle20"
+         url="%FIRSTXML%/spots/_20_user_defaultpoint20.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle20"
+         onout="onoutIconDefaultPointSpotStyle20"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle20">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle20">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 21 -->
+  <style name="IconDefaultPointSpotStyle21"
+         url="%FIRSTXML%/spots/_21_user_defaultpoint21.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle21"
+         onout="onoutIconDefaultPointSpotStyle21"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle21">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle21">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 22 -->
+  <style name="IconDefaultPointSpotStyle22"
+         url="%FIRSTXML%/spots/_22_user_defaultpoint22.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle22"
+         onout="onoutIconDefaultPointSpotStyle22"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle22">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle22">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 23 -->
+  <style name="IconDefaultPointSpotStyle23"
+         url="%FIRSTXML%/spots/_23_user_defaultpoint23.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle23"
+         onout="onoutIconDefaultPointSpotStyle23"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle23">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle23">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 24 -->
+  <style name="IconDefaultPointSpotStyle24"
+         url="%FIRSTXML%/spots/_24_user_defaultpoint24.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle24"
+         onout="onoutIconDefaultPointSpotStyle24"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle24">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle24">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 25 -->
+  <style name="IconDefaultPointSpotStyle25"
+         url="%FIRSTXML%/spots/_25_user_defaultpoint25.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle25"
+         onout="onoutIconDefaultPointSpotStyle25"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle25">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle25">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style 26 -->
+  <style name="IconDefaultPointSpotStyle26"
+         url="%FIRSTXML%/spots/_26_user_defaultpoint26.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle26"
+         onout="onoutIconDefaultPointSpotStyle26"
+
+         height="30"
+         width="30"
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle26">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle26">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+    
+  <!-- Spot Style - Default Point Spot Style -->
+  <style name="IconDefaultPointSpotStyle"
+         url="%FIRSTXML%/spots/hotspot_neutral_user_defaultpoint0.png"
+         visible="false"
+         onhover="onhoverIconDefaultPointSpotStyle"
+         onout="onoutIconDefaultPointSpotStyle"
+
+
+         />
+
+  <action name="onhoverIconDefaultPointSpotStyle">
+    showtooltip('hotspot');
+  </action>
+
+
+  <action name="onoutIconDefaultPointSpotStyle">
+    hideTooltip();
+
+
+
+  </action>
+
+
+
+<action name="viewControlMoveUp">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(isfullvertical == false AND calc(view.vlookat-%2) LT view.vlookatmin,
+				moveto(get(view.hlookat), get(view.vlookatmin));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat-%2));
+			);
+		,
+			set(vlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveDown">
+	if(%1,
+		if(%2,
+			set(isfullvertical, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewvfov, panoview.vmax, panoview.vmin);
+				if (viewvfov == 180,
+					set(isfullvertical, true);
+				);
+			);
+			if(sceneisfull360 == false AND calc(view.vlookat+%2) GT view.vlookatmax,
+				moveto(get(view.hlookat), get(view.vlookatmax));
+			,
+				moveto(get(view.hlookat), calc(view.vlookat+%2));
+			);
+		,
+			set(vlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveVertStop());
+		);
+	,
+		set(vlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveLeft">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat-%2) LT view.hlookatmin,
+				moveto(get(view.hlookatmin), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat-%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, -1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+		);
+	,
+		set(hlookat_moveforce, -1);
+	);
+</action>
+<action name="viewControlMoveRight">
+	if(%1,
+		if(%2,
+			set(isfullhorizontal, false);
+			ifnot(scene[get(xml.scene)].planar,
+				sub(viewhfov, panoview.hmax, panoview.hmin);
+				if (viewhfov == 360,
+					set(isfullhorizontal, true);
+				);
+			);
+			if(isfullhorizontal == false AND calc(view.hlookat+%2) GT view.hlookatmax,
+				moveto(get(view.hlookatmax), get(view.vlookat));
+			,
+				moveto(calc(view.hlookat+%2), get(view.vlookat));
+			);
+		,
+			set(hlookat_moveforce, +1);
+			delayedcall(0.1, viewControlMoveHoriStop());
+			
+		);
+	,
+		set(hlookat_moveforce, +1);
+	);
+</action>
+<action name="viewControlMoveHoriStop">
+	set(hlookat_moveforce, 0);
+</action>
+<action name="viewControlMoveVertStop">
+	set(vlookat_moveforce, 0);
+</action>
+
+  <!-- Hide / Show Controls -->
+  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
+  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
+
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);set(fullscreen,false);</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);set(fullscreen,true);</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+
+</krpano>
