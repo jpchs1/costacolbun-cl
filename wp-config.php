@@ -83,7 +83,10 @@ define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
-
+/** Anti-spam & security hardening */
+define( 'DISALLOW_FILE_EDIT', true );
+define( 'DISALLOW_UNFILTERED_UPLOADS', true );
+define( 'WP_POST_REVISIONS', 5 );
 
 /* That's all, stop editing! Happy publishing. */
 
