@@ -257,7 +257,7 @@ a { color: inherit; text-decoration: none; }
     inset: 0;
     background:
         linear-gradient(180deg, rgba(12, 53, 71, 0.3) 0%, rgba(12, 53, 71, 0.5) 100%),
-        url('https://costacolbun.cl/img/familia-muelle-2.jpg') center/cover no-repeat;
+        url('../img/familia-muelle-2.webp') center/cover no-repeat;
     transform: scale(1.05);
     animation: heroZoom 20s ease-in-out infinite alternate;
 }
