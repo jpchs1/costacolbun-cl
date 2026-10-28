@@ -4,7 +4,7 @@
 
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function handleScroll() {
         const currentScroll = window.pageYOffset;
@@ -13,7 +13,7 @@
         } else {
             navbar.classList.remove('scrolled');
         }
-        lastScroll = currentScroll;
+
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -28,12 +28,29 @@
         document.body.classList.toggle('menu-open');
     });
 
+    function closeMenu() {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }
+    navToggle.addEventListener('click', function() {
+        navToggle.setAttribute('aria-expanded', String(navMenu.classList.contains('active')));
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            closeMenu();
+            navToggle.focus();
+        }
+    });
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) closeMenu();
+    });
+    handleScroll();
     // Close menu on link click
     navMenu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+            closeMenu();
         });
     });
 
@@ -41,11 +58,11 @@
     document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            var target = document.querySelector(this.getAttribute('href'));
+            var target = document.getElementById(this.getAttribute('href').slice(1));
             if (target) {
                 var offset = navbar.offsetHeight;
                 var pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: pos, behavior: 'smooth' });
+                window.scrollTo({ top: pos, behavior: reduceMotion ? 'auto' : 'smooth' });
             }
         });
     });
@@ -55,6 +72,7 @@
         '.about-grid, .feature-card, .lakelife-card, .nearby-card, .gallery-item, .section-header, .pricing-highlight, .contact-grid'
     );
 
+    if ('IntersectionObserver' in window && !reduceMotion) {
     var observer = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
             if (entry.isIntersecting) {
@@ -69,14 +87,24 @@
         observer.observe(el);
     });
 
+    }
+
     // Gallery Lightbox
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = lightbox.querySelector('.lightbox-img');
     var galleryItems = document.querySelectorAll('.gallery-item img');
     var currentIndex = 0;
+    var galleryFocus = null;
     var images = Array.from(galleryItems);
 
     galleryItems.forEach(function(img, index) {
+        var item = img.closest('.gallery-item');
+        item.tabIndex = 0;
+        item.setAttribute('role', 'button');
+        item.setAttribute('aria-label', 'Ampliar: ' + img.alt);
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); img.click(); }
+        });
         img.addEventListener('click', function() {
             currentIndex = index;
             openLightbox(img.src, img.alt);
@@ -84,14 +112,19 @@
     });
 
     function openLightbox(src, alt) {
+        galleryFocus = document.activeElement;
         lightboxImg.src = src;
         lightboxImg.alt = alt;
         lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        lightbox.querySelector('.lightbox-close').focus();
         document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
         lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        if (galleryFocus) galleryFocus.focus();
         document.body.style.overflow = '';
     }
 
@@ -117,6 +150,12 @@
 
     document.addEventListener('keydown', function(e) {
         if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Tab') {
+            var controls = Array.from(lightbox.querySelectorAll('button'));
+            var first = controls[0], last = controls[controls.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
         if (e.key === 'Escape') closeLightbox();
         if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox-prev').click();
         if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox-next').click();
@@ -203,35 +242,26 @@
         }, { passive: true });
     }
 
-    // Contact form handling
+    // Prepare a WhatsApp inquiry; the visitor reviews and sends it.
     var contactForm = document.getElementById('contactForm');
+    var visitDate = document.getElementById('visitDate');
+    var today = new Date();
+    visitDate.min = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        var btn = contactForm.querySelector('button[type="submit"]');
-        var originalText = btn.textContent;
-        btn.textContent = 'Enviando...';
-        btn.disabled = true;
-
-        // Simple mailto fallback
-        var name = contactForm.querySelector('#name').value;
-        var email = contactForm.querySelector('#email').value;
-        var phone = contactForm.querySelector('#phone').value;
-        var message = contactForm.querySelector('#message').value;
-
-        var subject = encodeURIComponent('Consulta Costa Colbún - ' + name);
-        var body = encodeURIComponent(
-            'Nombre: ' + name + '\n' +
-            'Email: ' + email + '\n' +
-            'Teléfono: ' + phone + '\n\n' +
-            'Mensaje:\n' + message
-        );
-
-        window.location.href = 'mailto:info@costacolbun.cl?subject=' + subject + '&body=' + body;
-
-        setTimeout(function() {
-            btn.textContent = originalText;
-            btn.disabled = false;
-        }, 2000);
+        if (!contactForm.reportValidity()) return;
+        var name = document.getElementById('name').value.trim();
+        var email = document.getElementById('email').value.trim();
+        var phone = document.getElementById('phone').value.trim();
+        var message = document.getElementById('message').value.trim();
+        var buildPlan = document.getElementById('buildPlan').value;
+        var lines = ['Hola, quiero conocer Costa Colbún este verano 2027 y consultar por el Bono de Construcción de UF 300.', '', 'Nombre: ' + name];
+        if (email) lines.push('Email: ' + email);
+        if (phone) lines.push('Teléfono: ' + phone);
+        if (visitDate.value) lines.push('Fecha de visita propuesta: ' + visitDate.value.split('-').reverse().join('/'));
+        if (buildPlan) lines.push('Plazo para construir: ' + buildPlan);
+        if (message) lines.push('', message);
+        window.location.assign('https://wa.me/56992337976?text=' + encodeURIComponent(lines.join('\n')));
     });
 
 })();
