@@ -129,7 +129,10 @@ a { color: inherit; text-decoration: none; }
     height: 50px;
     width: auto;
     transition: var(--transition);
-    filter: brightness(0) invert(1);
+    filter: none;
+    background: var(--white);
+    padding: 4px;
+    border-radius: 6px;
     
 }
 
