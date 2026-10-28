@@ -38,6 +38,7 @@ jobs:
         shell: python
         run: |
           import base64
+          import http.cookiejar
           import hashlib
           import json
           import os
@@ -60,12 +61,14 @@ jobs:
           class NoRedirect(urllib.request.HTTPRedirectHandler):
               def redirect_request(self, *args, **kwargs):
                   return None
-          client = urllib.request.build_opener(NoRedirect())
+          client = urllib.request.build_opener(NoRedirect(), urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+          session_token = ''
           credentials = os.environ["CPANEL_USERNAME"] + ":" + os.environ["CPANEL_PASSWORD"]
           authorization = "Basic " + base64.b64encode(credentials.encode()).decode()
 
           def api(module, function, params=None, body=None, content_type=None):
-              url = origin + "/execute/" + module + "/" + function
+              global session_token
+              url = origin + session_token + "/execute/" + module + "/" + function
               if params:
                   url += "?" + urllib.parse.urlencode(params)
               headers = {"Authorization": authorization, "Accept": "application/json"}
@@ -76,6 +79,33 @@ jobs:
                   with client.open(request, timeout=90) as response:
                       result = json.load(response)
               except urllib.error.HTTPError as error:
+                  if error.code == 401 and not session_token:
+                      print("La autenticacion HTTP directa fue rechazada. Comprobando inicio de sesion de cPanel.")
+                      payload = urllib.parse.urlencode({"user": os.environ["CPANEL_USERNAME"], "pass": os.environ["CPANEL_PASSWORD"], "goto_uri": "/"}).encode()
+                      login_request = urllib.request.Request(origin + "/login/?login_only=1", data=payload, headers={"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"})
+                      try:
+                          with client.open(login_request, timeout=60) as login_response:
+                              login = json.load(login_response)
+                      except urllib.error.HTTPError as login_error:
+                          raw = login_error.read().decode("utf-8", errors="replace").lower()
+                          if "two" in raw and "factor" in raw:
+                              reason = "El servidor solicita segundo factor."
+                          elif "brute" in raw or "cphulk" in raw or "blocked" in raw:
+                              reason = "El servidor indica bloqueo de acceso."
+                          else:
+                              reason = "El inicio de sesion de cPanel tambien fue rechazado (HTTP " + str(login_error.code) + ")."
+                          raise SystemExit(reason) from None
+                      except (OSError, ValueError):
+                          raise SystemExit("No se pudo completar el inicio de sesion de cPanel.") from None
+                      token = login.get("security_token", "")
+                      if login.get("status") != 1 or not re.fullmatch(r"/cpsess[0-9]+", token):
+                          reason = "cPanel no concedio una sesion."
+                          if login.get("tfa_required") or login.get("two_factor_authentication_required"):
+                              reason = "cPanel solicita segundo factor."
+                          raise SystemExit(reason)
+                      session_token = token
+                      print("Inicio de sesion de cPanel confirmado.")
+                      return api(module, function, params, body, content_type)
                   raise SystemExit("cPanel devolvio HTTP " + str(error.code) + " en " + module + "/" + function) from None
               except (OSError, ValueError):
                   raise SystemExit("No se pudo conectar o interpretar la respuesta de cPanel en " + module + "/" + function) from None
