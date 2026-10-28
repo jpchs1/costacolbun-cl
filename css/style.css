@@ -1424,3 +1424,69 @@ section[id], main[id] { scroll-margin-top: 100px; }
     .phototour-caption p { font-size:.85rem; }
     .phototour-controls { bottom:24px; left:24px; right:auto; }
 }
+
+/* Visit contact: personal invitation and a shorter first step */
+.contact-visit { background:#eaece5; }
+.contact-visit .contact-grid { grid-template-columns:1fr 1fr; gap:30px; align-items:start; }
+.visit-welcome { overflow:hidden; background:#103e4d; border-radius:22px; }
+.visit-welcome-photo { height:230px; position:relative; background:#164b5b; }
+.visit-welcome-photo picture, .visit-welcome-photo img { display:block; width:100%; height:100%; }
+.visit-welcome-photo img { object-fit:cover; object-position:center 55%; }
+.visit-welcome-photo::after { content:''; position:absolute; inset:35% 0 0; background:linear-gradient(transparent,#103e4d); pointer-events:none; }
+.visit-welcome-photo > span { position:absolute; left:34px; bottom:19px; z-index:1; color:#e6f2f5; font-size:.67rem; letter-spacing:.08em; }
+.visit-welcome-copy { padding:12px 34px 34px; }
+.contact-visit .visit-welcome-copy .section-label { color:#b0d4dd; font-size:.64rem; letter-spacing:.1em; }
+.contact-visit .visit-welcome-copy .section-title { color:white; font-size:clamp(2rem,3.2vw,2.65rem); margin:15px 0 22px; line-height:1.2; }
+.visit-welcome-copy .section-title em { color:#b8d9df; font-weight:400; }
+.contact-visit .contact-text { font-size:.9rem; color:#dce9ed; line-height:1.8; margin-bottom:25px; }
+.visit-experience { list-style:none; display:grid; gap:16px; margin-bottom:28px; }
+.visit-experience li { display:flex; gap:14px; align-items:baseline; color:#e2edf1; font-size:.78rem; line-height:1.7; }
+.visit-experience li > span { font-size:.65rem; color:#9bc4cf; }
+.visit-direct { display:flex; justify-content:space-between; gap:12px; border-top:1px solid #ffffff30; padding:22px 0 0; color:white; font-size:.8rem; font-weight:500; line-height:1.7; }
+.visit-direct:hover { text-decoration:underline; text-underline-offset:5px; }
+.visit-contact-line { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; color:#bbd4de; font-size:.7rem; }
+.visit-contact-line a { padding:3px 0; }
+.visit-contact-line a:hover { color:white; text-decoration:underline; }
+.contact-visit .visit-booking { padding:34px; border:1px solid #d8e2df; border-radius:22px; box-shadow:0 12px 36px #153d4c08; }
+.visit-form-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.visit-form-kicker { font-size:.62rem; text-transform:uppercase; letter-spacing:.11em; color:#426772; }
+.visit-form-mark { display:flex; align-items:center; justify-content:center; width:32px; height:32px; flex-shrink:0; border:1px solid #dce7e6; border-radius:50%; color:#386d7b; }
+.contact-visit .form-title { font-size:1.9rem; font-weight:500; color:#123e4d; margin:0 0 12px; }
+.contact-visit .form-help { font-size:.83rem; line-height:1.8; margin:0 0 26px; }
+.contact-visit .form-group { margin-bottom:18px; }
+.contact-visit .form-group label { font-size:.77rem; color:#2c4e5b; margin-bottom:8px; }
+.contact-visit .form-group input, .contact-visit .form-group select, .contact-visit .form-group textarea { background:#f8faf8; border-color:#dce5e2; font-size:.85rem; padding:12px 14px; }
+.contact-visit .form-group textarea { min-height:86px; }
+.field-optional { color:#6e8085; font-size:.65rem; font-weight:400; margin-left:6px; }
+.field-help { color:#62767d; font-size:.68rem; line-height:1.7; margin-top:7px; }
+.visit-extra { margin:5px 0 24px; border-top:1px solid #e1e9e6; border-bottom:1px solid #e1e9e6; }
+.visit-extra summary { display:flex; justify-content:space-between; align-items:center; gap:15px; padding:15px 0; font-size:.72rem; color:#3c626f; cursor:pointer; list-style:none; line-height:1.6; }
+.visit-extra summary::-webkit-details-marker { display:none; }
+.visit-extra summary > span { font-size:1.2rem; flex-shrink:0; }
+.visit-extra[open] summary > span { transform:rotate(45deg); }
+.visit-extra-fields { padding:6px 0 0; }
+.visit-form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.contact-visit .visit-submit { background:#154c5c; border-color:#154c5c; font-size:.85rem; justify-content:space-between; padding:14px 24px; }
+.contact-visit .visit-submit:hover { background:#0c3547; border-color:#0c3547; }
+.visit-submit-note { text-align:center; font-size:.66rem; color:#60747c; margin:12px 0 0; line-height:1.7; }
+.visit-bonus-note { display:grid; grid-template-columns:1fr 1.6fr; gap:18px; padding-top:23px; margin-top:24px; border-top:1px solid #dce6e3; }
+.visit-bonus-note > span { font-size:.65rem; color:#59747d; }
+.visit-bonus-note strong { display:block; color:#1b5362; font:500 1.8rem var(--font-display); margin-top:2px; }
+.visit-bonus-note p { font-size:.65rem; color:#60737a; line-height:1.8; }
+.visit-bonus-note a { display:inline-block; text-decoration:underline; text-underline-offset:3px; margin-top:5px; color:#275e6f; }
+@media (max-width:1024px) {
+    .contact-visit .contact-grid { gap:22px; }
+    .visit-welcome-copy, .contact-visit .visit-booking { padding:28px; }
+    .visit-welcome-copy { padding-top:10px; }
+    .visit-welcome-photo > span { left:28px; }
+    .visit-form-row { grid-template-columns:1fr; gap:0; }
+}
+@media (max-width:768px) {
+    .contact-visit .contact-grid { grid-template-columns:1fr; gap:24px; }
+    .visit-welcome-photo { height:200px; }
+    .visit-welcome-copy, .contact-visit .visit-booking { padding:25px; }
+    .visit-welcome-copy { padding-top:10px; }
+    .contact-visit .visit-welcome-copy .section-title { font-size:2.1rem; }
+    .visit-welcome-photo > span { left:25px; }
+    .visit-bonus-note { grid-template-columns:1fr 1.7fr; }
+}
