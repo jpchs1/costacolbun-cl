@@ -22,86 +22,138 @@ jobs:
       url: https://www.costacolbun.cl/
     steps:
       - name: Descargar version
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
       - name: Validar JavaScript
         run: node --check js/main.js
 
-      - name: Publicar por FTPS y verificar produccion
+      - name: Publicar mediante API de cPanel
         env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          FTP_SERVER_DIR: ${{ secrets.FTP_SERVER_DIR }}
+          CPANEL_URL: ${{ secrets.CPANEL_URL }}
+          CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
+          CPANEL_PASSWORD: ${{ secrets.CPANEL_PASSWORD }}
           DEPLOY_SHA: ${{ github.sha }}
         shell: python
         run: |
-          import ftplib
+          import base64
           import hashlib
+          import json
           import os
           from pathlib import Path, PurePosixPath
-          import ssl
+          import re
           import time
+          import urllib.error
+          import urllib.parse
           import urllib.request
+          import uuid
 
-          required = ("FTP_SERVER", "FTP_USERNAME", "FTP_PASSWORD", "FTP_SERVER_DIR")
+          required = ("CPANEL_URL", "CPANEL_USERNAME", "CPANEL_PASSWORD")
           missing = [key for key in required if not os.environ.get(key)]
           if missing:
-              raise SystemExit("Faltan secretos de GitHub Actions: " + ", ".join(missing))
+              raise SystemExit("Faltan secretos: " + ", ".join(missing))
+          origin = os.environ["CPANEL_URL"].strip().rstrip("/")
+          parsed = urllib.parse.urlsplit(origin)
+          if parsed.scheme != "https" or parsed.username or parsed.password or parsed.path or parsed.query or parsed.fragment:
+              raise SystemExit("CPANEL_URL debe ser una URL HTTPS del servidor, sin ruta.")
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, *args, **kwargs):
+                  return None
+          client = urllib.request.build_opener(NoRedirect())
+          credentials = os.environ["CPANEL_USERNAME"] + ":" + os.environ["CPANEL_PASSWORD"]
+          authorization = "Basic " + base64.b64encode(credentials.encode()).decode()
 
-          remote = os.environ["FTP_SERVER_DIR"]
-          if any(c in remote for c in ("\r", "\n")) or ".." in PurePosixPath(remote).parts:
-              raise SystemExit("FTP_SERVER_DIR no es una ruta valida.")
+          def api(module, function, params=None, body=None, content_type=None):
+              url = origin + "/execute/" + module + "/" + function
+              if params:
+                  url += "?" + urllib.parse.urlencode(params)
+              headers = {"Authorization": authorization, "Accept": "application/json"}
+              if content_type:
+                  headers["Content-Type"] = content_type
+              request = urllib.request.Request(url, data=body, headers=headers)
+              try:
+                  with client.open(request, timeout=90) as response:
+                      result = json.load(response)
+              except urllib.error.HTTPError as error:
+                  raise SystemExit("cPanel devolvio HTTP " + str(error.code) + " en " + module + "/" + function) from None
+              except (OSError, ValueError):
+                  raise SystemExit("No se pudo conectar o interpretar la respuesta de cPanel en " + module + "/" + function) from None
+              if result.get("status") != 1:
+                  # Avoid printing server responses that may include sensitive request details.
+                  raise SystemExit("cPanel rechazo " + module + "/" + function + ". No se publicaron los siguientes archivos.")
+              return result.get("data")
+
+          data = api("DomainInfo", "single_domain_data", {"domain": "costacolbun.cl"})
+          def roots(value):
+              if isinstance(value, dict):
+                  for key, item in value.items():
+                      if key == "documentroot" and isinstance(item, str):
+                          yield item
+                      else:
+                          yield from roots(item)
+              elif isinstance(value, list):
+                  for item in value:
+                      yield from roots(item)
+          matches = set(roots(data))
+          if len(matches) != 1:
+              raise SystemExit("No se pudo identificar una carpeta unica para costacolbun.cl.")
+          document_root = matches.pop()
+          path = PurePosixPath(document_root)
+          if not path.is_absolute() or ".." in path.parts or len(path.parts) < 4:
+              raise SystemExit("La carpeta del dominio no es valida para publicar.")
+          print("Dominio confirmado: costacolbun.cl")
+          print("Carpeta confirmada por cPanel: " + document_root)
 
           root = Path.cwd()
-          files = []
+          files = [root / ".htaccess"]
           for folder in ("css", "js", "img", "blog"):
-              files.extend(p for p in (root / folder).rglob("*") if p.is_file())
-          files.extend([root / ".htaccess", root / "index.html"])
+              files.extend(sorted((root / folder).rglob("*")))
+          files = [p for p in files if p.is_file()]
+          files.append(root / "index.html")
           if any(p.is_symlink() for p in files):
               raise SystemExit("No se publican enlaces simbolicos.")
-          if not all(p.is_file() for p in files):
-              raise SystemExit("Faltan archivos del sitio.")
-          # index.html is uploaded last. Existing server files (including Tour 360) are preserved.
-          files.sort(key=lambda p: (p.name == "index.html", p.as_posix()))
-          expected = hashlib.sha256((root / "index.html").read_bytes()).hexdigest()
+          sha = os.environ["DEPLOY_SHA"]
+          published = {}
+          for source in files:
+              relative = source.relative_to(root).as_posix()
+              content = source.read_bytes()
+              if relative == "index.html":
+                  text = content.decode("utf-8")
+                  text = re.sub(r'(css/style\.css|js/main\.js)(?:\?[^"]*)?', lambda m: m[1] + "?v=" + sha, text)
+                  content = text.encode("utf-8")
+              boundary = "cpanel" + uuid.uuid4().hex
+              fields = {"dir": str(path / PurePosixPath(relative).parent), "overwrite": "1"}
+              parts = []
+              for name, value in fields.items():
+                  parts.append(("--" + boundary + '\r\nContent-Disposition: form-data; name="' + name + '"\r\n\r\n' + value + "\r\n").encode())
+              parts.append(("--" + boundary + '\r\nContent-Disposition: form-data; name="file-1"; filename="' + source.name + '"\r\nContent-Type: application/octet-stream\r\n\r\n').encode())
+              parts.extend([content, ("\r\n--" + boundary + "--\r\n").encode()])
+              api("Fileman", "upload_files", body=b"".join(parts), content_type="multipart/form-data; boundary=" + boundary)
+              if relative in ("index.html", "css/style.css", "js/main.js"):
+                  published[relative] = hashlib.sha256(content).hexdigest()
+              print("Publicado: " + relative)
 
-          with ftplib.FTP_TLS(context=ssl.create_default_context(), timeout=60) as ftp:
-              ftp.connect(os.environ["FTP_SERVER"], 21)
-              ftp.login(os.environ["FTP_USERNAME"], os.environ["FTP_PASSWORD"])
-              ftp.prot_p()
-              # The configured document root must already exist.
-              ftp.cwd(remote)
-              base = ftp.pwd()
-              for path in files:
-                  relative = path.relative_to(root)
-                  ftp.cwd(base)
-                  for part in relative.parts[:-1]:
-                      try:
-                          ftp.cwd(part)
-                      except ftplib.error_perm:
-                          ftp.mkd(part)
-                          ftp.cwd(part)
-                  with path.open("rb") as source:
-                      ftp.storbinary("STOR " + relative.name, source)
-                  print("Publicado: " + relative.as_posix())
-
-          url = "https://www.costacolbun.cl/?deploy=" + os.environ["DEPLOY_SHA"]
+          # Verify public HTML and critical assets without sending cPanel credentials.
           for attempt in range(12):
-              try:
-                  request = urllib.request.Request(url, headers={"Cache-Control": "no-cache", "User-Agent": "CostaColbun-Deploy"})
-                  with urllib.request.urlopen(request, timeout=30) as response:
-                      actual = hashlib.sha256(response.read()).hexdigest()
-                  if actual == expected:
-                      print("Produccion verificada: https://www.costacolbun.cl/")
-                      summary = os.environ.get("GITHUB_STEP_SUMMARY")
-                      if summary:
-                          with open(summary, "a", encoding="utf-8") as output:
-                              output.write("Publicado y verificado en https://www.costacolbun.cl/\n")
-                      break
-              except (OSError, urllib.error.URLError):
-                  pass
+              verified = True
+              for relative, expected in published.items():
+                  public_path = "" if relative == "index.html" else relative
+                  url = "https://www.costacolbun.cl/" + public_path + "?v=" + sha
+                  try:
+                      request = urllib.request.Request(url, headers={"Cache-Control": "no-cache", "User-Agent": "CostaColbun-Deploy"})
+                      with urllib.request.urlopen(request, timeout=30) as response:
+                          actual = hashlib.sha256(response.read()).hexdigest()
+                      if actual != expected:
+                          verified = False
+                  except OSError:
+                      verified = False
+              if verified:
+                  print("Produccion verificada: portada, CSS y JavaScript.")
+                  with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+                      summary.write("Publicado y verificado: https://www.costacolbun.cl/\n")
+                  break
               if attempt < 11:
                   time.sleep(10)
           else:
-              raise SystemExit("Archivos enviados, pero no se pudo verificar la nueva portada en produccion.")
+              raise SystemExit("Archivos enviados, pero la version publica aun no coincide.")
