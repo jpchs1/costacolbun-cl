@@ -242,6 +242,61 @@
         }, { passive: true });
     }
 
+
+    // Help visitors prepare a specific inquiry without storing their personal data.
+    function prepareInquiry(text, topic, scrollToForm) {
+        var messageField = document.getElementById('message');
+        var topicField = document.getElementById('inquiryTopic');
+        if (!messageField) return;
+        if (!messageField.value.includes(text)) {
+            messageField.value = messageField.value.trim() ? messageField.value.trim() + '\n\n' + text : text;
+        }
+        if (topicField) topicField.value = topic;
+        var wrapper = document.querySelector('.contact-form-wrapper');
+        if (wrapper) wrapper.classList.add('inquiry-ready');
+        if (scrollToForm) {
+            var formTop = document.getElementById('contacto').getBoundingClientRect().top + window.pageYOffset - navbar.offsetHeight;
+            window.scrollTo({top: formTop, behavior: reduceMotion ? 'auto' : 'smooth'});
+        }
+    }
+    var terrainMatch = document.getElementById('terrainMatch');
+    if (terrainMatch) terrainMatch.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var text = 'Quiero consultar el plano, los sitios disponibles y sus valores vigentes.\n' +
+            'Mi proyecto: ' + document.getElementById('terrainUse').value + '\n' +
+            'Me gustaria priorizar: ' + document.getElementById('terrainPriority').value + '\n' +
+            'Presupuesto del terreno: ' + document.getElementById('terrainBudget').value;
+        prepareInquiry(text, 'Plano, disponibilidad y valores', true);
+        document.getElementById('name').focus({preventScroll:true});
+    });
+    document.querySelectorAll('[data-house-idea]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            prepareInquiry('Asi imagino mi proyecto: ' + link.dataset.houseIdea + '. Quiero revisar terreno, factibilidad y condiciones de fachada.', 'Construcción y fachada', false);
+        });
+    });
+    document.querySelectorAll('[data-inquiry]').forEach(function(link) {
+        link.addEventListener('click', function() {
+            prepareInquiry(link.dataset.inquiry, 'Servicios y antecedentes del terreno', false);
+        });
+    });
+    var photoSlides = [{"img":"DJI_0005","title":"El paisaje donde empieza todo","text":"Una vista aérea del entorno de Costa Colbún para comenzar a imaginar tu próxima casa."},{"img":"DJI_0001","title":"Descubre el lugar desde otra perspectiva","text":"Observa la relación entre los terrenos, el paisaje y el lago. En la visita podrás recorrer el sitio que te interese."},{"img":"DJI_0016","title":"Un entorno para conocer en persona","text":"Las fotografías son el comienzo. Ven a descubrir las vistas y la orientación de los terrenos."}];
+    document.querySelectorAll('[data-tour-slide]').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var index = Number(button.dataset.tourSlide);
+            var slide = photoSlides[index];
+            if (!slide) return;
+            document.getElementById('tourPhotoSource').srcset = 'img/' + slide.img + '.webp';
+            document.getElementById('tourPhoto').src = 'img/' + slide.img + '.JPG';
+            document.getElementById('tourPhoto').alt = slide.title + ' — Costa Colbún';
+            document.getElementById('tourPhotoCount').textContent = String(index + 1).padStart(2, '0') + ' / 03';
+            document.getElementById('tourPhotoTitle').textContent = slide.title;
+            document.getElementById('tourPhotoText').textContent = slide.text;
+            document.querySelectorAll('[data-tour-slide]').forEach(function(item) {
+                item.setAttribute('aria-pressed', String(item === button));
+            });
+        });
+    });
+
     // Prepare a WhatsApp inquiry; the visitor reviews and sends it.
     var contactForm = document.getElementById('contactForm');
     var visitDate = document.getElementById('visitDate');
@@ -256,6 +311,8 @@
         var message = document.getElementById('message').value.trim();
         var buildPlan = document.getElementById('buildPlan').value;
         var lines = ['Hola, quiero conocer Costa Colbún este verano 2027 y consultar por el Bono de Construcción de UF 300.', '', 'Nombre: ' + name];
+        var inquiryTopic = document.getElementById('inquiryTopic');
+        if (inquiryTopic) lines.push('Quiero revisar: ' + inquiryTopic.value);
         if (email) lines.push('Email: ' + email);
         if (phone) lines.push('Teléfono: ' + phone);
         if (visitDate.value) lines.push('Fecha de visita propuesta: ' + visitDate.value.split('-').reverse().join('/'));
