@@ -2,6 +2,94 @@
 (function() {
     'use strict';
 
+
+    // Convert only with a quote matching the current calendar day in Chile.
+    var ufDateFormatter = new Intl.DateTimeFormat('en-CA', {timeZone:'America/Santiago', year:'numeric',month:'2-digit',day:'2-digit'});
+    function chileDay() {
+        var parts = ufDateFormatter.formatToParts(new Date());
+        function part(type) { return parts.find(function(item) { return item.type === type; }).value; }
+        return part('year') + '-' + part('month') + '-' + part('day');
+    }
+    function validUf(quote, day) {
+        return quote && quote.date === day && typeof quote.value === 'number' && Number.isFinite(quote.value) && quote.value > 0;
+    }
+    var ufPesos = new Intl.NumberFormat('es-CL',{style:'currency',currency:'CLP',maximumFractionDigits:0});
+    var ufPrecision = new Intl.NumberFormat('es-CL',{minimumFractionDigits:2,maximumFractionDigits:2});
+    function showUf(quote) {
+        document.querySelectorAll('[data-uf-amount]').forEach(function(node) {
+            node.textContent = ufPesos.format(Math.round(Number(node.dataset.ufAmount) * quote.value)) + ' CLP';
+        });
+        document.querySelectorAll('[data-uf-reference]').forEach(function(node) {
+            node.textContent = 'UF al ' + quote.date.split('-').reverse().join('/') + ': $' + ufPrecision.format(quote.value) + ' · CLP referenciales';
+        });
+        document.querySelectorAll('[data-uf-official]').forEach(function(node) { node.href = 'https://www.sii.cl/valores_y_fechas/uf/uf' + quote.date.slice(0,4) + '.htm'; });
+        document.documentElement.classList.remove('uf-unavailable');
+    }
+    function clearUf(message) {
+        document.querySelectorAll('[data-uf-amount]').forEach(function(node) { node.textContent = message; });
+        document.querySelectorAll('[data-uf-reference]').forEach(function(node) { node.textContent = 'Precios en UF · Conversión CLP del día no disponible por el momento'; });
+        document.documentElement.classList.add('uf-unavailable');
+    }
+    async function fetchUfJson(url) {
+        var controller = new AbortController();
+        var timeout = setTimeout(function(){controller.abort();},8000);
+        try {
+            var response = await fetch(url,{signal:controller.signal,cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer'});
+            if (!response.ok) throw new Error('UF source unavailable');
+            return await response.json();
+        } finally { clearTimeout(timeout); }
+    }
+    var activeUfDay = '';
+    var ufRequestPending = false;
+    async function refreshUf() {
+        var day = chileDay();
+        if (ufRequestPending) return;
+        ufRequestPending = true;
+        var quote = null;
+        try {
+            var stored = JSON.parse(localStorage.getItem('costacolbun-uf-day') || 'null');
+            if (validUf(stored,day)) quote = stored;
+        } catch (_) {}
+        var seed = {date:'2026-10-28',value:41231.70};
+        if (!quote && validUf(seed,day)) quote = seed;
+        if (quote) showUf(quote);
+        else clearUf('Consultando CLP…');
+        try {
+            var data = await fetchUfJson('https://indicadores.cl/api/v1/hoy.json?date=' + day);
+            var latest = {date:data.uf && data.uf.fecha,value:data.uf && data.uf.valor};
+            if (!validUf(latest,day)) throw new Error('UF date mismatch');
+            quote = latest;
+        } catch (_) {
+            try {
+                var fallback = await fetchUfJson('https://mindicador.cl/api/uf/' + day.split('-').reverse().join('-'));
+                var entry = (fallback.serie || []).find(function(item) {
+                    return typeof item.fecha === 'string' && item.fecha.slice(0,10) === day;
+                });
+                var other = {date:entry && entry.fecha.slice(0,10),value:entry && entry.valor};
+                if (validUf(other,day)) quote = other;
+            } catch (_) {}
+        }
+        // A tab may cross midnight while a request is in flight.
+        if (day === chileDay() && validUf(quote,day)) {
+            showUf(quote);
+            activeUfDay = day;
+            try { localStorage.setItem('costacolbun-uf-day',JSON.stringify(quote)); } catch (_) {}
+        } else {
+            clearUf('CLP no disponible');
+            activeUfDay = '';
+        }
+        ufRequestPending = false;
+    }
+    if (document.querySelector('[data-uf-amount]')) {
+        refreshUf();
+        document.addEventListener('visibilitychange',function() {
+            if (!document.hidden && activeUfDay !== chileDay()) refreshUf();
+        });
+        setInterval(function() {
+            if (!document.hidden && activeUfDay !== chileDay()) refreshUf();
+        },60000);
+    }
+
     // Navbar scroll effect
     const navbar = document.getElementById('navbar');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
