@@ -111,6 +111,11 @@
             <p class="hero-pretitle">Verano 2027 &middot; Costa Colbún</p>
             <h1 class="hero-title">Tu casa a orillas<br>del <em>Lago Colbún</em></h1>
             <p class="hero-subtitle">Ven a conocer el condominio este verano. Recorre sus terrenos de 1.500 m², descubre el acceso compartido al lago e imagina aquí tu próxima casa.</p>
+            <div class="site-price-range site-price-range-hero" aria-label="Rango de precios de los sitios">
+                    <div class="site-price-item"><span class="site-price-caption">Desde</span><div><strong>1.840 UF</strong><span data-uf-amount="1840">$75.866.328 CLP</span></div></div>
+                    <div class="site-price-item"><span class="site-price-caption">Hasta</span><div><strong>2.420 UF</strong><span data-uf-amount="2420">$99.780.714 CLP</span></div></div>
+                    <p class="site-uf-reference" data-uf-reference>UF al 28/10/2026: $41.231,70 · CLP referenciales</p>
+                </div>
             <div class="hero-actions">
                 <a href="#contacto" class="btn btn-primary">Agenda tu visita este verano</a>
                 <a href="#bono-verano" class="btn btn-outline">Conoce el bono de UF 300</a>
@@ -286,12 +291,18 @@
                     <p>Proyecta una casa a tu medida y conoce los lineamientos de fachada que cuidan la armonía del condominio.</p>
                 </div>
             </div>
-            <div class="pricing-highlight">
+            <div class="pricing-highlight pricing-range-card">
                 <div class="pricing-content">
-                    <span class="pricing-label">Parcelas Lago Colbún desde</span>
-                    <span class="pricing-value">1.840 UF</span>
-                    <span class="pricing-detail">Terrenos de 1.500 m² &bull; Desde 1.840 a 2.420 UF</span>
-                    <a href="#contacto" class="btn btn-primary">Consultar terrenos disponibles</a>
+                    <span class="pricing-label">Cuánto cuesta un sitio en Costa Colbún</span>
+                    <div class="site-price-range" aria-label="Rango de precios de los sitios">
+                    <div class="site-price-item"><span class="site-price-caption">Desde</span><div><strong>1.840 UF</strong><span data-uf-amount="1840">$75.866.328 CLP</span></div></div>
+                    <div class="site-price-item"><span class="site-price-caption">Hasta</span><div><strong>2.420 UF</strong><span data-uf-amount="2420">$99.780.714 CLP</span></div></div>
+                    <p class="site-uf-reference" data-uf-reference>UF al 28/10/2026: $41.231,70 · CLP referenciales</p>
+                </div>
+                    <span class="pricing-detail">Terrenos de 1.500 m² · Construcción no incluida</span>
+                    <p class="price-data-source">Fuente UF: <a href="https://indicadores.cl/api/" target="_blank" rel="noopener">indicadores.cl</a> · <a href="https://www.sii.cl/valores_y_fechas/uf/uf2026.htm" data-uf-official target="_blank" rel="noopener">Tabla oficial SII</a></p>
+                    <p class="price-terms">Equivalentes referenciales en CLP, redondeados al peso. La venta se expresa en UF. Consulta el precio y la disponibilidad de cada sitio.</p>
+                    <a href="#contacto" class="btn btn-primary" data-inquiry="Quiero consultar los sitios disponibles entre 1.840 y 2.420 UF y sus valores vigentes.">Consultar terrenos y valores</a>
                 </div>
             </div>
         </div>
@@ -316,7 +327,7 @@
                     <div class="form-group"><label for="terrainPriority">Qué te gustaría priorizar al visitar</label><select id="terrainPriority" name="priority"><option>Vistas y orientación</option><option>Ubicación y acceso al lago compartido</option><option>Privacidad y entorno</option><option>Comparar distintas opciones</option></select></div>
                     <div class="form-group"><label for="terrainBudget">Presupuesto para el terreno</label><select id="terrainBudget" name="budget"><option>Quiero conocer los valores vigentes</option><option>Entre 1.840 y 2.000 UF</option><option>Entre 2.000 y 2.420 UF</option></select></div>
                     <button type="submit" class="btn btn-primary btn-full">Consultar plano y sitios disponibles <span aria-hidden="true">→</span></button>
-                    <p class="match-disclaimer">Valores publicados desde 1.840 UF. Disponibilidad, precio y características se confirman para cada sitio. La construcción se cotiza por separado.</p>
+                    <p class="match-disclaimer">Valores publicados: 1.840 a 2.420 UF. Equivalente: <span data-uf-amount="1840">$75.866.328 CLP</span> a <span data-uf-amount="2420">$99.780.714 CLP</span>. Disponibilidad y características se confirman por sitio. Construcción no incluida.</p>
                     <noscript><p><a href="#contacto">Escríbenos para revisar terrenos y valores.</a></p></noscript>
                 </form>
             </div>
