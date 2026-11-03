@@ -58,7 +58,7 @@ jobs:
               request = urllib.request.Request(url, data=body, headers=headers)
               try:
                   with client.open(request, timeout=90) as response:
-                      result = json.load(response)
+                      result = json.loads(response.read().decode('utf-8', errors='replace'))
               except urllib.error.HTTPError as error:
                   if error.code == 401 and not session_token:
                       print("La autenticacion HTTP directa fue rechazada. Comprobando inicio de sesion de cPanel.")
@@ -88,7 +88,8 @@ jobs:
                       print("Inicio de sesion de cPanel confirmado.")
                       return api(module, function, params, body, content_type)
                   raise SystemExit("cPanel devolvio HTTP " + str(error.code) + " en " + module + "/" + function) from None
-              except (OSError, ValueError):
+              except (OSError, ValueError) as exc:
+                  print("API_RESPONSE_ERROR_TYPE=" + type(exc).__name__)
                   raise SystemExit("No se pudo conectar o interpretar la respuesta de cPanel en " + module + "/" + function) from None
               if result.get("status") != 1:
                   # Avoid printing server responses that may include sensitive request details.
@@ -113,7 +114,12 @@ jobs:
           print("SPAM_SETTINGS")
           safe(settings)
           print("SPAM_PREFERENCES")
-          safe(api("SpamAssassin","get_user_preferences"))
+          prefs=api("SpamAssassin","get_user_preferences")
+          print("PREFERENCES_TYPE="+type(prefs).__name__)
+          if isinstance(prefs,dict):
+              print("PREFERENCES_KEYS="+",".join(prefs.keys()))
+          safe(prefs)
+          print("FILTER_COUNT="+str(len(api("Email","list_filters",{"account":target}) or [])))
           root="/home/"+os.environ["CPANEL_USERNAME"]+"/mail/clasesdeski.cl/info"
           stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0}
           import email
