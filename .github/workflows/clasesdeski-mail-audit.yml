@@ -136,7 +136,7 @@ jobs:
                   flags=name.rsplit(":2,",1)[1] if ":2," in name else ""
                   if sub=="new" or "S" not in flags: unread.append(name)
               stats["unread"]+=len(unread)
-              for name in unread[:150]:
+              for name in unread[:8]:
                   try:
                       result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
                   except SystemExit:
@@ -150,7 +150,7 @@ jobs:
                   if not raw:
                       stats["read_errors"]+=1
                       continue
-                  msg=email.parser.HeaderParser().parsestr(raw)
+                  msg=email.parser.HeaderParser().parsestr(raw.lstrip().lstrip(chr(65279)).lstrip())
                   if not msg.keys():
                       import html
                       candidates=[html.unescape(raw),urllib.parse.unquote(raw)]
@@ -159,7 +159,7 @@ jobs:
                       except (ValueError,TypeError):
                           pass
                       for candidate in candidates:
-                          parsed_msg=email.parser.HeaderParser().parsestr(candidate.lstrip("\\ufeff\\r\\n"))
+                          parsed_msg=email.parser.HeaderParser().parsestr(candidate.lstrip().lstrip(chr(65279)).lstrip())
                           if parsed_msg.get("From") or parsed_msg.get("Received"):
                               msg=parsed_msg
                               break
