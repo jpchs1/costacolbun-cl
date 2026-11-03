@@ -116,6 +116,7 @@ jobs:
           # Read back the filter and validate the saved rule and destination.
           saved=api("Email","get_filter",{"account":target,"filtername":name})
           serialized=json.dumps(saved,sort_keys=True)
+          print("SAVED_FILTER_CONFIGURATION="+serialized)
           verified=all(s in serialized for s in ("+++++","save",destination,"contains"))
           if not verified:
               api("Email","delete_filter",{"account":target,"filtername":name})
