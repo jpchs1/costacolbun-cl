@@ -1,0 +1,145 @@
+name: Audit Clasesdeski mail privacy
+on:
+  push:
+    branches: [ops/clasesdeski-mail-audit-20261103]
+    paths: [.github/workflows/clasesdeski-mail-audit.yml]
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    environment: production
+    steps:
+      - name: Read-only mailbox and spam settings audit
+        env:
+          CPANEL_URL: ${{ secrets.CPANEL_URL }}
+          CPANEL_USERNAME: ${{ secrets.CPANEL_USERNAME }}
+          CPANEL_PASSWORD: ${{ secrets.CPANEL_PASSWORD }}
+        shell: python
+        run: |
+          import base64
+          import http.cookiejar
+          import hashlib
+          import json
+          import os
+          from pathlib import Path, PurePosixPath
+          import re
+          import time
+          import urllib.error
+          import urllib.parse
+          import urllib.request
+          import uuid
+          
+          required = ("CPANEL_URL", "CPANEL_USERNAME", "CPANEL_PASSWORD")
+          missing = [key for key in required if not os.environ.get(key)]
+          if missing:
+              raise SystemExit("Faltan secretos: " + ", ".join(missing))
+          origin = os.environ["CPANEL_URL"].strip().rstrip("/")
+          parsed = urllib.parse.urlsplit(origin)
+          if parsed.scheme != "https" or parsed.username or parsed.password or parsed.path or parsed.query or parsed.fragment:
+              raise SystemExit("CPANEL_URL debe ser una URL HTTPS del servidor, sin ruta.")
+          class NoRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, *args, **kwargs):
+                  return None
+          client = urllib.request.build_opener(NoRedirect(), urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+          session_token = ''
+          credentials = os.environ["CPANEL_USERNAME"] + ":" + os.environ["CPANEL_PASSWORD"]
+          authorization = "Basic " + base64.b64encode(credentials.encode()).decode()
+          
+          def api(module, function, params=None, body=None, content_type=None):
+              global session_token
+              url = origin + session_token + "/execute/" + module + "/" + function
+              if params:
+                  url += "?" + urllib.parse.urlencode(params)
+              headers = {"Authorization": authorization, "Accept": "application/json"}
+              if content_type:
+                  headers["Content-Type"] = content_type
+              request = urllib.request.Request(url, data=body, headers=headers)
+              try:
+                  with client.open(request, timeout=90) as response:
+                      result = json.load(response)
+              except urllib.error.HTTPError as error:
+                  if error.code == 401 and not session_token:
+                      print("La autenticacion HTTP directa fue rechazada. Comprobando inicio de sesion de cPanel.")
+                      payload = urllib.parse.urlencode({"user": os.environ["CPANEL_USERNAME"], "pass": os.environ["CPANEL_PASSWORD"], "goto_uri": "/"}).encode()
+                      login_request = urllib.request.Request(origin + "/login/?login_only=1", data=payload, headers={"Content-Type": "application/x-www-form-urlencoded", "Accept": "application/json"})
+                      try:
+                          with client.open(login_request, timeout=60) as login_response:
+                              login = json.load(login_response)
+                      except urllib.error.HTTPError as login_error:
+                          raw = login_error.read().decode("utf-8", errors="replace").lower()
+                          if "two" in raw and "factor" in raw:
+                              reason = "El servidor solicita segundo factor."
+                          elif "brute" in raw or "cphulk" in raw or "blocked" in raw:
+                              reason = "El servidor indica bloqueo de acceso."
+                          else:
+                              reason = "El inicio de sesion de cPanel tambien fue rechazado (HTTP " + str(login_error.code) + ")."
+                          raise SystemExit(reason) from None
+                      except (OSError, ValueError):
+                          raise SystemExit("No se pudo completar el inicio de sesion de cPanel.") from None
+                      token = login.get("security_token", "")
+                      if login.get("status") != 1 or not re.fullmatch(r"/cpsess[0-9]+", token):
+                          reason = "cPanel no concedio una sesion."
+                          if login.get("tfa_required") or login.get("two_factor_authentication_required"):
+                              reason = "cPanel solicita segundo factor."
+                          raise SystemExit(reason)
+                      session_token = token
+                      print("Inicio de sesion de cPanel confirmado.")
+                      return api(module, function, params, body, content_type)
+                  raise SystemExit("cPanel devolvio HTTP " + str(error.code) + " en " + module + "/" + function) from None
+              except (OSError, ValueError):
+                  raise SystemExit("No se pudo conectar o interpretar la respuesta de cPanel en " + module + "/" + function) from None
+              if result.get("status") != 1:
+                  # Avoid printing server responses that may include sensitive request details.
+                  raise SystemExit("cPanel rechazo " + module + "/" + function + ". No se publicaron los siguientes archivos.")
+              return result.get("data")
+          
+          
+          target="info@clasesdeski.cl"
+          accounts=api("Email","list_pops",{"regex":"^info@clasesdeski[.]cl$"})
+          if not isinstance(accounts,list) or not any(a.get("email")==target for a in accounts):
+              raise SystemExit("Target mailbox not confirmed")
+          print("TARGET_ACCOUNT_CONFIRMED")
+          settings=api("Email","get_spam_settings")
+          def safe(obj,prefix=""):
+              if isinstance(obj,dict):
+                  for k,v in obj.items():
+                      if isinstance(v,(dict,list)): safe(v,prefix+str(k)+".")
+                      elif isinstance(v,(bool,int,float,str)) and re.fullmatch(r"[0-9. -]+|true|false|yes|no|on|off|enabled|disabled",str(v),re.I):
+                          print(prefix+str(k)+"="+str(v))
+              elif isinstance(obj,list):
+                  for v in obj: safe(v,prefix)
+          print("SPAM_SETTINGS")
+          safe(settings)
+          print("SPAM_PREFERENCES")
+          safe(api("SpamAssassin","get_user_preferences"))
+          root="/home/"+os.environ["CPANEL_USERNAME"]+"/mail/clasesdeski.cl/info"
+          stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0}
+          import email
+          for sub in ("new","cur"):
+              listing=api("Fileman","list_files",{"dir":root+"/"+sub,"include_mime":0,"show_hidden":1})
+              entries=listing.get("files",[]) if isinstance(listing,dict) else listing
+              if not isinstance(entries,list): raise SystemExit("Cannot interpret listing")
+              unread=[]
+              for ent in entries:
+                  name=ent.get("file") or ent.get("name") or ""
+                  if not name or "/" in name or name in (".","..") or ent.get("type")=="dir": continue
+                  flags=name.rsplit(":2,",1)[1] if ":2," in name else ""
+                  if sub=="new" or "S" not in flags: unread.append(name)
+              stats["unread"]+=len(unread)
+              for name in unread[:150]:
+                  result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
+                  raw=result.get("content","") if isinstance(result,dict) else ""
+                  msg=email.message_from_string(raw,headersonly=True)
+                  stats["examined"]+=1
+                  stats["spam_yes"]+=int(str(msg.get("X-Spam-Status","")).lower().startswith("yes") or str(msg.get("X-Spam-Flag","")).upper()=="YES")
+                  match=re.search(r"(?:score=|^)(-?[0-9]+(?:[.][0-9]+)?)",str(msg.get("X-Spam-Score","")) or str(msg.get("X-Spam-Status","")))
+                  if match:
+                      score=float(match.group(1))
+                      stats["score_ge_5"]+=int(score>=5)
+                      stats["score_ge_4"]+=int(score>=4)
+                  else: stats["score_missing"]+=1
+          print("MAILBOX_AGGREGATE="+json.dumps(stats))
+          print("READ_ONLY_AUDIT_COMPLETE")
+          
