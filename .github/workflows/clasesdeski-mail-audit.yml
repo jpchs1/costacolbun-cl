@@ -142,7 +142,14 @@ jobs:
                   except SystemExit:
                       stats["read_errors"]+=1
                       continue
+                  if isinstance(result,list) and result:
+                      result=result[0]
                   raw=result.get("content","") if isinstance(result,dict) else ""
+                  if stats["examined"]==0:
+                      print("CONTENT_SCHEMA="+json.dumps({"type":type(result).__name__,"keys":list(result.keys()) if isinstance(result,dict) else [],"content_length":len(raw)}))
+                  if not raw:
+                      stats["read_errors"]+=1
+                      continue
                   msg=email.parser.HeaderParser().parsestr(raw)
                   stats["examined"]+=1
                   stats["spam_yes"]+=int(str(msg.get("X-Spam-Status","")).lower().startswith("yes") or str(msg.get("X-Spam-Flag","")).upper()=="YES")
