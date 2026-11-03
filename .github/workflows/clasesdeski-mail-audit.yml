@@ -138,7 +138,7 @@ jobs:
               stats["unread"]+=len(unread)
               for name in unread[:8]:
                   try:
-                      result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
+                      result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"iso-8859-1","to_charset":"utf-8"})
                   except SystemExit:
                       stats["read_errors"]+=1
                       continue
@@ -150,6 +150,18 @@ jobs:
                   if not raw:
                       stats["read_errors"]+=1
                       continue
+                  import gzip,zlib
+                  buf=raw.encode("latin1",errors="replace")
+                  if stats["examined"]==0:
+                      print("STORAGE_FORMAT="+json.dumps({"gzip":buf.startswith(bytes([31,139])),"dovecot_zlib":buf.startswith(b"ZL"),"has_plain_received":"Received:" in raw,"has_escaped_newline":chr(92)+"n" in raw}))
+                  if buf.startswith(b"ZL") or buf.startswith(bytes([31,139])):
+                      offset=3 if buf.startswith(b"ZL") else 0
+                      for decompress in (lambda b:gzip.decompress(b),lambda b:zlib.decompress(b),lambda b:zlib.decompress(b,-15)):
+                          try:
+                              raw=decompress(buf[offset:]).decode("utf-8",errors="replace")
+                              break
+                          except (ValueError,OSError,zlib.error):
+                              pass
                   msg=email.parser.HeaderParser().parsestr(raw.lstrip().lstrip(chr(65279)).lstrip())
                   if not msg.keys():
                       import html
