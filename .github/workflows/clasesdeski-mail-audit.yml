@@ -123,7 +123,7 @@ jobs:
           print("WHITELIST_ENTRY_COUNT="+str(len(prefs.get("whitelist_from") or [])))
           print("FILTER_COUNT="+str(len(api("Email","list_filters",{"account":target}) or [])))
           root="/home/"+os.environ["CPANEL_USERNAME"]+"/mail/clasesdeski.cl/info"
-          stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0,"read_errors":0}
+          stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0,"read_errors":0,"booking_terms":0,"unsolicited_terms":0}
           import email.parser
           for sub in ("new","cur"):
               listing=api("Fileman","list_files",{"dir":root+"/"+sub,"include_mime":0,"show_hidden":1})
@@ -136,7 +136,7 @@ jobs:
                   flags=name.rsplit(":2,",1)[1] if ":2," in name else ""
                   if sub=="new" or "S" not in flags: unread.append(name)
               stats["unread"]+=len(unread)
-              for name in unread[:8]:
+              for name in unread[:150]:
                   try:
                       result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"iso-8859-1","to_charset":"utf-8"})
                   except SystemExit:
@@ -181,8 +181,16 @@ jobs:
                   if stats["examined"]==0:
                       print("HEADER_STRUCTURE="+json.dumps({"count":len(msg.keys()),"has_from":bool(msg.get("From")),"has_subject":bool(msg.get("Subject")),"spam_headers":[k for k in msg.keys() if re.search("spam|auth",k,re.I)]}))
                   stats["examined"]+=1
+                  from email.header import decode_header,make_header
+                  try:
+                      subject=str(make_header(decode_header(str(msg.get("Subject",""))))).lower()
+                  except (ValueError,LookupError):
+                      subject=str(msg.get("Subject","")).lower()
+                  stats["booking_terms"]+=int(bool(re.search(r"ski|esqu[ií]|snow|nieve|tour|reserva|booking|clase|quotation|cotiza",subject)))
+                  stats["unsolicited_terms"]+=int(bool(re.search(r"crypto|bitcoin|casino|viagra|seo service|website design|loan offer|backlink|penis|sext|porn",subject)))
+
                   stats["spam_yes"]+=int(str(msg.get("X-Spam-Status","")).lower().startswith("yes") or str(msg.get("X-Spam-Flag","")).upper()=="YES")
-                  match=re.search(r"(?:score=|^)(-?[0-9]+(?:[.][0-9]+)?)",str(msg.get("X-Spam-Score","")) or str(msg.get("X-Spam-Status","")))
+                  match=re.search(r"(?:score=|^)(-?[0-9]+(?:[.][0-9]+)?)",str(msg.get("X-Spam-Status","")))
                   if match:
                       score=float(match.group(1))
                       stats["score_ge_5"]+=int(score>=5)
