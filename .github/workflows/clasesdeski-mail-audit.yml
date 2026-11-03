@@ -123,7 +123,7 @@ jobs:
           print("WHITELIST_ENTRY_COUNT="+str(len(prefs.get("whitelist_from") or [])))
           print("FILTER_COUNT="+str(len(api("Email","list_filters",{"account":target}) or [])))
           root="/home/"+os.environ["CPANEL_USERNAME"]+"/mail/clasesdeski.cl/info"
-          stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0}
+          stats={"unread":0,"examined":0,"spam_yes":0,"score_ge_5":0,"score_ge_4":0,"score_missing":0,"read_errors":0}
           import email.parser
           for sub in ("new","cur"):
               listing=api("Fileman","list_files",{"dir":root+"/"+sub,"include_mime":0,"show_hidden":1})
@@ -137,7 +137,11 @@ jobs:
                   if sub=="new" or "S" not in flags: unread.append(name)
               stats["unread"]+=len(unread)
               for name in unread[:150]:
-                  result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
+                  try:
+                      result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
+                  except SystemExit:
+                      stats["read_errors"]+=1
+                      continue
                   raw=result.get("content","") if isinstance(result,dict) else ""
                   msg=email.parser.HeaderParser().parsestr(raw)
                   stats["examined"]+=1
