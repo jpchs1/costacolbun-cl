@@ -136,7 +136,7 @@ jobs:
                   flags=name.rsplit(":2,",1)[1] if ":2," in name else ""
                   if sub=="new" or "S" not in flags: unread.append(name)
               stats["unread"]+=len(unread)
-              for name in unread[:150]:
+              for name in unread[:8]:
                   try:
                       result=api("Fileman","get_file_content",{"dir":root+"/"+sub,"file":name,"from_charset":"utf-8","to_charset":"utf-8"})
                   except SystemExit:
@@ -151,6 +151,8 @@ jobs:
                       stats["read_errors"]+=1
                       continue
                   msg=email.parser.HeaderParser().parsestr(raw)
+                  if stats["examined"]==0:
+                      print("HEADER_STRUCTURE="+json.dumps({"count":len(msg.keys()),"has_from":bool(msg.get("From")),"has_subject":bool(msg.get("Subject")),"spam_headers":[k for k in msg.keys() if re.search("spam|auth",k,re.I)]}))
                   stats["examined"]+=1
                   stats["spam_yes"]+=int(str(msg.get("X-Spam-Status","")).lower().startswith("yes") or str(msg.get("X-Spam-Flag","")).upper()=="YES")
                   match=re.search(r"(?:score=|^)(-?[0-9]+(?:[.][0-9]+)?)",str(msg.get("X-Spam-Score","")) or str(msg.get("X-Spam-Status","")))
