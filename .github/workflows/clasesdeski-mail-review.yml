@@ -135,6 +135,7 @@ jobs:
           from cryptography.hazmat.primitives.ciphers.aead import AESGCM
           import email.policy,html
           pub=serialization.load_pem_public_key("-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyoA+KDY5vaSgzpViTfyK\ngqthApezALnqclMUr3FJL8kEkgmaBU2D1ryZrKIzDCsH88JfgZ8Ogz0t3GMeE14C\nKAWKxaftD1lu9l9oEm4C2RvrwI67LSafU6bxfLQj57XQYuuwkBLi7nP8rfa4uIKd\nVhLjy4EWQIopPLKPTk/17fTBryQUV1ujfjjLRHU/baxCvbooZUHNOoYmfgBK9qr+\ny5Se0XlYCsp6Ne6G9yLMZeRyW1IiLzqKdfniIAN0Tz142brWi46kRkpzfN+gJor0\n5+Ztk218aY0kYbConkSjsylUFxi3PESE9UBitgv+awze3jS/2BYCb+Nti+05BeG7\nIQIDAQAB\n-----END PUBLIC KEY-----\n".encode())
+          wanted=set(["bff0f3d5a993a9e4437ba721351a6832e963c46faed37e2ce9e14563f382aa8e","7a1cd1aa44673498632cd33b342a7889d6278a4f86add8eea078278d5ffca541","1eebc5885962d8a77a335e2f05a80d1ae9744dee6d3ef8400c237d97880624fb","e5d207ad0b44b4b21928d1221d38dcd93b258d25fc6f8538ef043e7296b98895","bd73411a8a0e822452cb1c0e56ddb4c5e11d7a792074a12c1158afc6857e903f","8de3a8d3daf316ed84c9855fe89099632b433ffe8da3ba5f3c306b975fd361ba","60355654ca4007d807bb8be5723ed1a23cb9f169ed8fd8ec2e4990d8570fdd19","2503bfec4726574db0fab6c941a09ae103c243cc493bc49390b527580bd094ef","482b66ff1146dd6e2f2024b3fdd1413c3d3d881d9212897cad7e0a888610e5bb","4dfde24bd80c3c2cc25e85ac300eb04e36efa338e7b8eb153672dca5486f9317","3eb190d357f78b96855fdb8339d5b78c228e94d4c34d71ef4e19248104d65712","72d93bac2bbce214d30502ae24cb9481806f739f4696659d7de0c9415eeb9862","a1a8b9d2816694d3ddce890710a1dbe27111487762c0452817196534185ce28f","cbacb0d9a0f83c7ea6132925a781bcec083663657841c0f63ea754e08245ee9a","c45f628a9491e3fa033354803aa6f816261911c70de1280f412be4021db7b0f5","4503f0af6968ae20728dd0c8eb341e9e55213b5d4cb82280810672ff2982c8e1","15b48efd32f3eca6edf0435c5f0ea1b9f6cb978e1c117836a3eb77732930410c","024e22f9dfd35ae5d3dba8cb3466b8da1eb7e873a09d643221179993a766c532","2a9390021a9f6a2957b5ed6495dddf7ff9b49f5415eb460617069783704cb5cb","edf871ea932d01af0599d46afbd03590ea1086da831be8152364eb709ec59031","b4e6caea6174be4c4ae59ce47ca3615cd6583937811fc38fe737e0660c1ff82f"])
           records=[]
           errors=0
           count=0
@@ -146,9 +147,13 @@ jobs:
               for name,entry in entries.items():
                   if "/" in name or name.startswith(".") or entry.get("type")=="dir": continue
                   uid=hashlib.sha256((sub+"/"+name).encode()).hexdigest()
+                  if uid not in wanted: continue
                   try:
-                      raw=content(folder,name)
-                      buf=raw.encode("latin1",errors="replace")
+                      url=origin+session_token+"/download?file="+urllib.parse.quote(folder+"/"+name,safe="")
+                      req=urllib.request.Request(url,headers={"Authorization":authorization})
+                      with client.open(req,timeout=90) as response:
+                          buf=response.read(30000000)
+                      if len(buf)>=30000000: raise ValueError("Message exceeds review limit")
                       if buf.startswith(bytes([31,139])): buf=gzip.decompress(buf)
                       elif buf.startswith(b"ZL"): buf=zlib.decompress(buf[3:],-15)
                       msg=email.message_from_bytes(buf,policy=email.policy.default)
